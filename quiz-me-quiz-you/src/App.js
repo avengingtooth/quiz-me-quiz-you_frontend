@@ -1,5 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
+
 import './App.css';
+import './stylesheets/auth.css'
+
 import Create from './pages/Create';
 import Edit from './pages/Edit';
 import Login from './pages/Login'
