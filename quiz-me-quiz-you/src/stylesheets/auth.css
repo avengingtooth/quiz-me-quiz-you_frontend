@@ -1,0 +1,77 @@
+.invalid{
+    background-color: palevioletred;
+}
+
+.valid{
+    background-color: palegreen;
+}
+
+.auth{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    /* background-color: white; */
+    /* box-shadow: 5px 6px 4px 0px grey; */
+    background-color: #EF476F;
+    box-shadow: 5px 6px 4px 0px peachpuff;
+    border-radius: 9%/10%;
+    padding: 5% 2% 5% 2%;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.auth label, .auth button, .auth #hiddenHoverTxt{
+    border: 1px black solid;
+    box-shadow: 1px 2px 3px 0px black;
+    border-radius: 9%/50%;
+    justify-content: center;
+    padding: 5%;
+    margin: 5%;
+}
+
+.auth label{
+    width: 90%;
+    text-align: left;
+}
+
+.login{
+    background-color: aliceblue;
+}
+
+.auth button, .auth #hiddenHoverTxt{
+    width: 60%;
+    margin: 0;
+    background-color: aliceblue;
+}  
+
+.auth div{
+    width: 100%;
+}
+
+.auth > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.submit{
+    position: absolute;
+}
+
+.auth .invalidSubmit:hover{
+    animation: slide 1s; 
+    padding-left: 200%;
+}
+
+@keyframes slide {
+    0%{
+        padding-left: 0%;
+    }
+
+    100%{
+        padding-left: 200%;
+    }
+}

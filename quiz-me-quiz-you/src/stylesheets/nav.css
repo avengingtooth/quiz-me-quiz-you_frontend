@@ -1,0 +1,22 @@
+nav{
+    color: white;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top: 5%;
+}
+
+nav > div{
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav > *{
+    padding: 0 5% 0 5%;
+}
+
+nav a{
+    font-size: 1rem;
+}
