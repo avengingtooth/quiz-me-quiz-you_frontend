@@ -11,6 +11,12 @@ function addAnswer(questions, qInd, emptyAnswer){
     return tempCopy
 }
 
+function deleteAnswer(questions, qInd, aInd){
+    let tempCopy = [...questions]
+    tempCopy[qInd].answers = [...questions[qInd].answers.slice(0 , aInd), ...questions[qInd].answers.slice(aInd + 1)]
+    return tempCopy
+}
+
 function updatedQuestionCopy(e, questions, qInd, aInd, key){
     // replaces value of answer scores and content or title depending on pass params
     let tempCopy = [...questions]
@@ -60,6 +66,7 @@ function QuizEditor(props){
                                             q.answers.map((ans, aInd) => {
                                                 return(
                                                     <div key={aInd} className="answer">
+                                                        <button onClick={() => {updateQuestions(deleteAnswer(questions, qInd, aInd))}}>✖</button>
                                                         {/* answer content */}
                                                         <input type="text" name="content" value={questions[qInd].answers[aInd].content} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd, aInd, 'content'))}/>
                                                         {/* score content */}
@@ -70,6 +77,7 @@ function QuizEditor(props){
                                         }      
                                         <button className="addAns" onClick={() => updateQuestions(addAnswer(questions, qInd, emptyAnswer))}>Add Answer</button>
                                     </div>
+                                    <button onClick={() => {updateQuestions([...questions.slice(0 , qInd), ...questions.slice(qInd + 1)])}}>Delete Question</button>
                                 </div>
                             )
                         })
