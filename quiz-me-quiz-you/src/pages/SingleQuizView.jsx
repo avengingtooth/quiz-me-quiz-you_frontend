@@ -5,9 +5,9 @@ function SingleQuizView(){
         title: 'Quiz Display Test',
         description: 'Some random description about the quiz',
         questions: [
-            {questionText: 'Question 1', answers: ['Answer 1', 'Answer 2', 'Answer 3', 'Answer 4']},
-            {questionText: 'Question 2', answers: ['Answer 1', 'Answer 2', 'Answer 3', 'Answer 4']},
-            {questionText: 'Question 2', answers: ['Answer 1', 'Answer 2', 'Answer 3', 'Answer 4']}
+            {questionText: 'Question 1', answers: {'Answer 1': 0, 'Answer 2': 0, 'Answer 3': 1, 'Answer 4': 0}},
+            {questionText: 'Question 2', answers: {'Answer 1': 0, 'Answer 2': 0, 'Answer 3': 1, 'Answer 4': 0}},
+            {questionText: 'Question 2', answers: {'Answer 1': 0, 'Answer 2': 0, 'Answer 3': 1, 'Answer 4': 0}}
         ]
     }
     return(
