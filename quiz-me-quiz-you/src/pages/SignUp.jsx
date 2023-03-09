@@ -4,9 +4,8 @@ import EssentialAuth from "../components/EssentialAuth"
 function checkOverall(fields, updateOverallValidity){
     // checks if all fields in the form are valid if they are it allows the submit button to be pressed without css dodging
     // double check on backend after cuz frontend results can be modified
-    console.log('check', fields[1])
     let allValid = true
-    fields.map(e => {
+    fields.forEach(e => {
         if(!e){
             allValid = false
         }
@@ -32,6 +31,8 @@ function SignUp(){
             checkOverall([uniqueUsername, true], updateOverallValidity)
         }
         else{
+            console.log('set false')
+            updatePswValidity(false)
             updateOverallValidity(false)
         }
     }, [confirmPassword, password])
@@ -44,11 +45,17 @@ function SignUp(){
     }, [username])
     return(
         <form className="auth">
+            <h1>Resister</h1>
             <EssentialAuth validPsw={validPsw} setPassword={setPassword} uniqueUsername={uniqueUsername} setUsername={setUsername}/>
             <label className={validPsw?'valid':'invalid'}>
                 <input placeholder="Confirm password"  onChange={event => setConfirmPassword(event.target.value)} type="password" />
             </label>
-            <button className={allFieldsValid?'validSubmit':'invalidSubmit'} onClick={() => {console.log('create account')}}>Create Account</button>
+            <div>
+                <p className="error" id="hiddenHoverTxt">Not all fields are valid</p>
+                <div className={`${allFieldsValid?'validSubmit':'invalidSubmit'} submit`}>
+                    <button onClick={() => {console.log('create account')}}>Create Account</button>
+                </div>
+            </div>
         </form>
     )
 }

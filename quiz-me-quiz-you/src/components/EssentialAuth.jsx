@@ -1,10 +1,10 @@
 function EssentialAuth(props){
     return(
         <>
-            <label className={props.uniqueUsername?'valid':'invalid'}>
+            <label className={typeof props.uniqueUsername === "boolean"?(props.uniqueUsername?'valid':'invalid'):'login'}>
                 <input type='text' placeholder="Username" onChange={event => props.setUsername(event.target.value)}/>
             </label>
-            <label className={props.validPsw?'valid':'invalid'}>
+            <label className={typeof props.validPsw === "boolean"?(props.validPsw?'valid':'invalid'):'login'}>
                 <input type='password' placeholder="Password"  onChange={event => {props.setPassword(event.target.value)}}/>
             </label>
         </>

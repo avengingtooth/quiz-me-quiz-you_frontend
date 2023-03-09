@@ -8,7 +8,7 @@ function Login(){
         <form className="auth">
             <h1>Log In</h1>
             <EssentialAuth setUsername={setUsername} setPassword={setPassword}/>
-            <button onClick={console.log('logging in', username, password)}>Log In</button>
+            <button onClick={() => {console.log('logging in', username, password)}}>Log In</button>
         </form>
     )
 }
