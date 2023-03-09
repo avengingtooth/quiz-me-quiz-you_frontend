@@ -1,0 +1,30 @@
+.answerContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 5%;
+}
+
+.answer:nth-child(1){
+    border-top-left-radius: var(--answerRadius);
+    background-color: #EF476F;
+}
+
+.answer:nth-child(2){
+    border-top-right-radius: var(--answerRadius);
+    background-color: #FFD166;
+}
+
+/* switch to before last child so the border radius works regarless of nb of answers */
+.answer:nth-child(3){
+    border-bottom-left-radius: var(--answerRadius);
+    background-color: #06D6A0;
+}
+
+.answer:last-child{
+    border-bottom-right-radius: var(--answerRadius);
+    background-color: #118AB2;
+}
+
+.answer{
+    padding: 7%;
+}

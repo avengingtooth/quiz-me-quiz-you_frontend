@@ -8,6 +8,7 @@ function Navbar(){
                 <NavLink to='/'>Home</NavLink>
                 <div>
                     <NavLink to='/quiz/all'>Feed</NavLink>
+                    <NavLink to='/quiz/create'>Create</NavLink>
                     <NavLink to='/login'>Log In</NavLink>
                     <NavLink to='/signup'>Sign Up</NavLink>
                 </div>

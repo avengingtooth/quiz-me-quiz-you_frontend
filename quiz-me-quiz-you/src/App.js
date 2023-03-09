@@ -5,6 +5,8 @@ import './stylesheets/auth.css'
 import './stylesheets/quiz.css'
 import './stylesheets/feed.css'
 import './stylesheets/nav.css'
+import './stylesheets/edit-create.css'
+import './stylesheets/answer.css'
 
 import Create from './pages/Create';
 import Edit from './pages/Edit';

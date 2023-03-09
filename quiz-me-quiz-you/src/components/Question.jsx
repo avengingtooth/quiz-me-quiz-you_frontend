@@ -1,7 +1,7 @@
 function Question(props){
     return(
         <div className="question">
-            <h2>Question</h2>
+            <h2>{props.title}</h2>
             <div className="answerContainer">
                 {
                     Object.keys(props.answers).map(key => {
