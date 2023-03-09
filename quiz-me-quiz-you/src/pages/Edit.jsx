@@ -1,9 +1,29 @@
-// import QuizEditor from "../components/QuizEditor"
+import QuizEditor from "../components/QuizEditor"
+
+import { useParams } from "react-router-dom"
 
 function Edit(){
-    console.log('edit')
+    let id = useParams().id
+    console.log('edit', useParams())
+    let quiz = {
+        title: 'Title',
+        description: 'asfd',
+        questions: [
+            {
+                title: 'idk',
+                answers: [
+                    {
+                        title: 'random',
+                        score: 'asdf'
+                    }
+                ]
+            }
+        ]
+    }
     return(
-        <div>
+        <div className="editContainer">
+            <h1>Edit Quiz</h1>
+            <QuizEditor quiz={quiz} action='Edit'></QuizEditor>
         </div>
     )
 }

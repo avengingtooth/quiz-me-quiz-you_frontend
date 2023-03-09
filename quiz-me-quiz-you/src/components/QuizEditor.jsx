@@ -33,9 +33,11 @@ function updatedQuestionCopy(e, questions, qInd, aInd, key){
 
 function QuizEditor(props){
     // states to keep track of all the inputs and set them to the previous values if editing
-    const [title, setTitle] = useState('')
-    const [description, setDesciption] = useState('')
-    const [questions, updateQuestions] = useState([])
+    const [title, setTitle] = useState(props.quiz.title)
+    const [description, setDesciption] = useState(props.quiz.description)
+    const [questions, updateQuestions] = useState(props.quiz.questions)
+
+    console.log(title, description, questions, 'hi')
 
     // sets the defaults for when adding a questions or answer element
     const emptyAnswer = {
