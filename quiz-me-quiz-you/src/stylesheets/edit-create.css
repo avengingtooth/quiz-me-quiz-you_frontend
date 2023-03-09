@@ -9,10 +9,6 @@
     height: 100%;
 }
 
-.editContainer h1{
-    color: white;
-}
-
 .editContainer input{
     margin: 2% 0 2% 0;
     padding: 2%;
@@ -22,5 +18,15 @@
 .editContainer form{
     display: flex;
     flex-direction: column;
-    padding: 5%;
+    padding: 0 5% 5% 5%;
+}
+
+.editContainer textarea{
+    height: 10vh;
+}
+
+.editContainer .title, .editContainer textarea{
+    margin-bottom: 5%;
+    text-align: left;
+    background-color: aliceblue;
 }
