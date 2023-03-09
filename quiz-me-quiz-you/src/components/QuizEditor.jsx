@@ -2,6 +2,8 @@ import { useState } from "react"
 
 function handleSubmit(e){
     e.preventDefault()
+    // send data to backedn to create quiz
+    window.location.href = '/quiz/all'
 }
 
 function addAnswer(questions, qInd, emptyAnswer){
@@ -50,41 +52,43 @@ function QuizEditor(props){
     return(
         <div className="editor" onSubmit={e => handleSubmit(e)}>
             <form action="">
-                {/* quiz title */}
-                <input className="title" type="text" placeholder='Title' value={title} onChange={event => setTitle(event.target.value)}/>
-                {/* quiz description */}
-                <textarea type="text" placeholder='Description' value={description} onChange={event => setDesciption(event.target.value)}/>
-                <div className="questions">
-                    {
-                        questions.map((q, qInd) => {
-                            return(
-                                <div className="question" key={qInd} >
-                                    {/* question content */}
-                                    <input type="text" placeholder="Question" value={questions[qInd].title} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd))}/>
-                                    <div className="answerContainer">
-                                        {
-                                            q.answers.map((ans, aInd) => {
-                                                return(
-                                                    <div key={aInd} className="answer">
-                                                        <button onClick={() => {updateQuestions(deleteAnswer(questions, qInd, aInd))}}>✖</button>
-                                                        {/* answer content */}
-                                                        <input type="text" name="content" value={questions[qInd].answers[aInd].content} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd, aInd, 'content'))}/>
-                                                        {/* score content */}
-                                                        <input type="number" name="score" value={questions[qInd].answers[aInd].score} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd, aInd, 'score'))}/>
-                                                    </div>
-                                                )
-                                            })
-                                        }      
-                                        <button className="addAns" onClick={() => updateQuestions(addAnswer(questions, qInd, emptyAnswer))}>Add Answer</button>
+                <div>
+                    {/* quiz title */}
+                    <input className="title" type="text" placeholder='Title' value={title} onChange={event => setTitle(event.target.value)}/>
+                    {/* quiz description */}
+                    <textarea type="text" placeholder='Description' value={description} onChange={event => setDesciption(event.target.value)}/>
+                    <div className="questions">
+                        {
+                            questions.map((q, qInd) => {
+                                return(
+                                    <div className="question" key={qInd} >
+                                        {/* question content */}
+                                        <input type="text" placeholder="Question" value={questions[qInd].title} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd))}/>
+                                        <div className="answerContainer">
+                                            {
+                                                q.answers.map((ans, aInd) => {
+                                                    return(
+                                                        <div key={aInd} className="answer">
+                                                            <button onClick={() => {updateQuestions(deleteAnswer(questions, qInd, aInd))}}>✖</button>
+                                                            {/* answer content */}
+                                                            <input type="text" name="content" value={questions[qInd].answers[aInd].content} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd, aInd, 'content'))}/>
+                                                            {/* score content */}
+                                                            <input type="number" name="score" value={questions[qInd].answers[aInd].score} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd, aInd, 'score'))}/>
+                                                        </div>
+                                                    )
+                                                })
+                                            }      
+                                            <button className="addAns" onClick={() => updateQuestions(addAnswer(questions, qInd, emptyAnswer))}>Add Answer</button>
+                                        </div>
+                                        <button onClick={() => {updateQuestions([...questions.slice(0 , qInd), ...questions.slice(qInd + 1)])}}>Delete Question</button>
                                     </div>
-                                    <button onClick={() => {updateQuestions([...questions.slice(0 , qInd), ...questions.slice(qInd + 1)])}}>Delete Question</button>
-                                </div>
-                            )
-                        })
-                    }
-                    <button onClick={() => {updateQuestions([...questions, emptyQuestion])}}>Add Question</button>
+                                )
+                            })
+                        }
+                        <button onClick={() => {updateQuestions([...questions, emptyQuestion])}}>Add Question</button>
+                    </div>
                 </div>
-                <button>{props.action}</button>
+                <button className="submitForm">{props.action}</button>
             </form>
         </div>
     )
