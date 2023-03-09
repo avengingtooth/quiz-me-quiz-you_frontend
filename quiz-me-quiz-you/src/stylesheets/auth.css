@@ -11,8 +11,10 @@
     display: flex;
     flex-direction: column;
     width: 30%;
-    background-color: white;
-    box-shadow: 5px 6px 4px 0px grey;
+    /* background-color: white; */
+    /* box-shadow: 5px 6px 4px 0px grey; */
+    background-color: #EF476F;
+    box-shadow: 5px 6px 4px 0px peachpuff;
     border-radius: 9%/10%;
     padding: 5% 2% 5% 2%;
     align-items: center;

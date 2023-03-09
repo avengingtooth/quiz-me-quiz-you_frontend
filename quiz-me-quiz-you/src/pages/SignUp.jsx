@@ -45,7 +45,7 @@ function SignUp(){
     }, [username])
     return(
         <form className="auth">
-            <h1>Resister</h1>
+            <h1>Register</h1>
             <EssentialAuth validPsw={validPsw} setPassword={setPassword} uniqueUsername={uniqueUsername} setUsername={setUsername}/>
             <label className={validPsw?'valid':'invalid'}>
                 <input placeholder="Confirm password"  onChange={event => setConfirmPassword(event.target.value)} type="password" />

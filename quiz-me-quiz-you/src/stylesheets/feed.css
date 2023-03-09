@@ -1,0 +1,25 @@
+#feed{
+    width: 100%;
+    padding: 0 5% 0 5%;
+    overflow-y: scroll;
+}
+
+#feed .preview{
+    position: inline;
+    background-color: #F9C74F;
+    box-shadow: 1px 2px 4px 0px white;
+    border-radius: 10%/20%;
+    padding: 3%;
+    height: 30vh;
+    overflow: scroll;
+}
+
+#feed #viewQuizzes{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2%;
+}
+
+#feed h1{
+    color: white;
+}
