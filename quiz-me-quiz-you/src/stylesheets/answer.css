@@ -1,0 +1,48 @@
+.answerContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 5%;
+}
+
+.answer:nth-child(4n + 1){
+    background-color: #EF476F;
+}
+
+.answer:nth-child(4n + 2){
+    background-color: #FFD166;
+}
+
+.answer:nth-child(4n + 3){
+    background-color: #06D6A0;
+}
+
+.answer:nth-child(4n){
+    background-color: #118AB2;
+}
+
+
+/* fix the corners that use the border radius */
+.answerContainer .answer:nth-child(1){
+    border-top-left-radius: var(--answerRadius);
+}
+
+.answerContainer .answer:nth-child(2){
+    border-top-right-radius: var(--answerRadius);
+}
+
+.answerContainer .answer:nth-last-child(2){
+    border-bottom-left-radius: var(--answerRadius);
+}
+
+.answerContainer .answer:nth-last-child(1){
+    border-bottom-right-radius: var(--answerRadius);
+}
+
+.answer{
+    padding: 7%;
+}
+
+.addAns{
+    padding: 17% 7% 17% 7%;
+    background-color: #ab3e99;
+}
