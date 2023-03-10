@@ -1,29 +1,17 @@
+import { useEffect, useState } from 'react'
 import QuizPreview from '../components/QuizPreview.jsx'
+import myApi from '../service/api.js'
 
 function Feed(){
-    let base = {
-        title: 'Quiz Display Test',
-        description: 'Some random description about the quiz',
-        questions: ['ObjectIds would be here but not populated for now']
-    }
+    const [quizzes, setQuizzes] = useState([])
+    useEffect(() => {
+        myApi
+            .getQuizzes(0, 20)
+            .then(res => setQuizzes(res.data.quizzes))
+            .catch(error => console.log(error))
+        console.log(quizzes)
+    }, [])
 
-    // this loop and the base are just to use to test the visuals for now
-    // the data should automatically be imported as quizzes from a fetch request
-    let quizzes = []
-    for (let i=0; i<20; i++){
-        quizzes.push({_id: i, title: base.title, description:base.description})
-        base.description += 'Some random description about the quiz'
-    }
-
-    for (let i=0; i<20; i++){
-        let rand1 = Math.round(Math.random()*(quizzes.length-1))
-        let rand2 = Math.round(Math.random()*(quizzes.length-1))
-        let p = quizzes[rand2]
-
-        quizzes[rand2] =  quizzes[rand1]
-        quizzes[rand1] = p
-        // [quizzes[rand1], quizzes[rand2]] = [quizzes[rand2], quizzes[rand1]]
-    }
     return(
         <div id="feed">
             <h1>Discover quizzes</h1>
