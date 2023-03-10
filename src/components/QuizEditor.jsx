@@ -11,7 +11,7 @@ async function handleSubmit(e, title, description, questions){
     e.preventDefault()
     console.log(await myApi.createQuiz(quiz))
     // send data to backedn to create quiz
-    // window.location.href = '/quiz/all'
+    window.location.href = '/quiz/all'
 }
 
 function addAnswer(questions, qInd, emptyAnswer){
@@ -28,7 +28,7 @@ function deleteAnswer(questions, qInd, aInd){
 }
 
 function updatedQuestionCopy(e, questions, qInd, aInd, key){
-    // replaces value of answer scores and content or questionText depending on pass params
+    // replaces value of answer pointss and content or questionText depending on pass params
     let tempCopy = [...questions]
     if(typeof aInd === 'number'){
         tempCopy[qInd]['answers'][aInd][key] = e.target.value
@@ -50,7 +50,7 @@ function QuizEditor(props){
     // sets the defaults for when adding a questions or answer element
     const emptyAnswer = {
         content: '',
-        score: 0
+        points: 0
     }
     const emptyQuestion = {
         questionText: '', 
@@ -82,8 +82,8 @@ function QuizEditor(props){
                                                             <button onClick={() => {updateQuestions(deleteAnswer(questions, qInd, aInd))}}>✖</button>
                                                             {/* answer content */}
                                                             <input type="text" name="content" value={questions[qInd].answers[aInd].content} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd, aInd, 'content'))}/>
-                                                            {/* score content */}
-                                                            <input type="number" name="score" value={questions[qInd].answers[aInd].score} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd, aInd, 'score'))}/>
+                                                            {/* points content */}
+                                                            <input type="number" name="points" value={questions[qInd].answers[aInd].points} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd, aInd, 'points'))}/>
                                                         </div>
                                                     )
                                                 })

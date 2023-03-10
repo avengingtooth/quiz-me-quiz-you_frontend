@@ -1,15 +1,17 @@
 import Question from "../components/Question"
+import myApi from '../service/api.js'
+import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
 
 function SingleQuizView(){
-    let quizData = {
-        title: 'Quiz Display Test',
-        description: 'Some random description about the quiz',
-        questions: [
-            {questionText: 'Question 1', answers: [{ansText: 'Answer 1', points: 0}, {ansText: 'Answer 2', points: 0}, {'Answer 3': 1}, {'Answer 4': 0}]},
-            {questionText: 'Question 2', answers: {'Answer 1': 0, 'Answer 2': 0, 'Answer 3': 1, 'Answer 4': 0}},
-            {questionText: 'Question 2', answers: {'Answer 1': 0, 'Answer 2': 0, 'Answer 3': 1, 'Answer 4': 0}}
-        ]
-    }
+    let {id} = useParams()
+    const [quizData, setQuiz] = useState({title: '', description:"" ,questions: []})
+    useEffect(() => {
+        myApi
+            .getQuiz(id)
+            .then((res) => setQuiz(res.data.quiz))
+            .catch(error => {console.log(error)})
+    }, [])
     return(
         <div id="quiz">
             <h1>{quizData.title}</h1>
