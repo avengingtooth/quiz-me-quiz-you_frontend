@@ -71,7 +71,7 @@ function QuizEditor(props){
                                                 q.answers.map((ans, aInd) => {
                                                     return(
                                                         <div key={aInd} className="answer">
-                                                            <button onClick={() => {updateQuestions(deleteAnswer(questions, qInd, aInd))}}>✖</button>
+                                                            <button type='button' onClick={() => {updateQuestions(deleteAnswer(questions, qInd, aInd))}}>✖</button>
                                                             {/* answer content */}
                                                             <input type="text" name="content" value={questions[qInd].answers[aInd].content} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd, aInd, 'content'))}/>
                                                             {/* score content */}
@@ -80,17 +80,17 @@ function QuizEditor(props){
                                                     )
                                                 })
                                             }      
-                                            <button className="addAns" onClick={() => updateQuestions(addAnswer(questions, qInd, emptyAnswer))}>Add Answer</button>
+                                            <button type='button' className="addAns" onClick={() => updateQuestions(addAnswer(questions, qInd, emptyAnswer))}>Add Answer</button>
                                         </div>
-                                        <button onClick={() => {updateQuestions([...questions.slice(0 , qInd), ...questions.slice(qInd + 1)])}}>Delete Question</button>
+                                        <button type='button' onClick={() => {updateQuestions([...questions.slice(0 , qInd), ...questions.slice(qInd + 1)])}}>Delete Question</button>
                                     </div>
                                 )
                             })
                         }
-                        <button onClick={() => {updateQuestions([...questions, emptyQuestion])}}>Add Question</button>
+                        <button type='button' onClick={() => {updateQuestions([...questions, emptyQuestion])}}>Add Question</button>
                     </div>
                 </div>
-                <button className="submitForm">{props.action}</button>
+                <button type='submit' className="submitForm">{props.action}</button>
             </form>
         </div>
     )
