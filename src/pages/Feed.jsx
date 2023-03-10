@@ -6,7 +6,7 @@ function Feed(){
     const [quizzes, setQuizzes] = useState([])
     useEffect(() => {
         myApi
-            .getQuizzes(0, 20)
+            .getQuizzes(20)
             .then(res => setQuizzes(res.data.quizzes))
             .catch(error => console.log(error))
         console.log(quizzes)

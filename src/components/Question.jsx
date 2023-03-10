@@ -4,10 +4,10 @@ function Question(props){
             <h2>{props.title}</h2>
             <div className="answerContainer">
                 {
-                    Object.keys(props.answers).map(key => {
+                    props.answers.map((ans, ind) => {
                         return(
-                            <button key={key} points={props.answers[key]} className="answer">
-                                <p>{key}</p>
+                            <button key={ind} points={ans.points} className="answer">
+                                <p>{ans.content}</p>
                             </button>
                         )
                     })
