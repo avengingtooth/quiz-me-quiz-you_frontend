@@ -1,9 +1,17 @@
 import { useState } from "react"
+import myApi from '../service/api.js'
 
-function handleSubmit(e){
+async function handleSubmit(e, title, description, questions){
+    let quiz = {
+        owner: 'Bob',
+        title: title,
+        description: description,
+        questions: questions
+    }
     e.preventDefault()
+    console.log(await myApi.createQuiz(quiz))
     // send data to backedn to create quiz
-    window.location.href = '/quiz/all'
+    // window.location.href = '/quiz/all'
 }
 
 function addAnswer(questions, qInd, emptyAnswer){
@@ -20,13 +28,13 @@ function deleteAnswer(questions, qInd, aInd){
 }
 
 function updatedQuestionCopy(e, questions, qInd, aInd, key){
-    // replaces value of answer scores and content or title depending on pass params
+    // replaces value of answer scores and content or questionText depending on pass params
     let tempCopy = [...questions]
     if(typeof aInd === 'number'){
         tempCopy[qInd]['answers'][aInd][key] = e.target.value
     }
     else{
-        tempCopy[qInd]['title'] = e.target.value
+        tempCopy[qInd]['questionText'] = e.target.value
     }
     return tempCopy
 }
@@ -45,14 +53,14 @@ function QuizEditor(props){
         score: 0
     }
     const emptyQuestion = {
-        title: 'title', 
+        questionText: '', 
         answers: [
             emptyAnswer
         ]
     }
 
     return(
-        <div className="editor" onSubmit={e => handleSubmit(e)}>
+        <div className="editor" onSubmit={e => handleSubmit(e, title, description, questions)}>
             <form action="">
                 <div>
                     {/* quiz title */}
@@ -65,7 +73,7 @@ function QuizEditor(props){
                                 return(
                                     <div className="question" key={qInd} >
                                         {/* question content */}
-                                        <input type="text" placeholder="Question" value={questions[qInd].title} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd))}/>
+                                        <input type="text" placeholder="Question" value={questions[qInd].questionText} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd))}/>
                                         <div className="answerContainer">
                                             {
                                                 q.answers.map((ans, aInd) => {
