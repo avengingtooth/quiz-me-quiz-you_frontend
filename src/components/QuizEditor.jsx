@@ -1,7 +1,7 @@
 import { useState } from "react"
 import myApi from '../service/api.js'
 
-async function handleSubmit(e, title, description, questions){
+async function handleSubmit(e, title, description, questions, action, id){
     let quiz = {
         owner: 'Bob',
         title: title,
@@ -9,8 +9,17 @@ async function handleSubmit(e, title, description, questions){
         questions: questions
     }
     e.preventDefault()
-    console.log(await myApi.createQuiz(quiz))
-    // send data to backedn to create quiz
+    if (action === 'Edit'){
+        console.log('edit')
+        await myApi.editQuiz(id, quiz)
+    }
+    else if(action === "Create"){
+        await myApi.createQuiz(quiz)
+    }
+    else{
+        await myApi.deleteQuiz(id)
+    }
+
     window.location.href = '/quiz/all'
 }
 
@@ -44,6 +53,7 @@ function QuizEditor(props){
     const [title, setTitle] = useState(props.quiz.title)
     const [description, setDesciption] = useState(props.quiz.description)
     const [questions, updateQuestions] = useState(props.quiz.questions)
+    const [action, setAction] = useState('')
 
     console.log(title, description, questions, 'hi')
 
@@ -60,7 +70,7 @@ function QuizEditor(props){
     }
 
     return(
-        <div className="editor" onSubmit={e => handleSubmit(e, title, description, questions)}>
+        <div className="editor" onSubmit={e => handleSubmit(e, title, description, questions, action, props.id)}>
             <form action="">
                 <div>
                     {/* quiz title */}
@@ -79,7 +89,7 @@ function QuizEditor(props){
                                                 q.answers.map((ans, aInd) => {
                                                     return(
                                                         <div key={aInd} className="answer">
-                                                            <button onClick={() => {updateQuestions(deleteAnswer(questions, qInd, aInd))}}>✖</button>
+                                                            <button type='button' onClick={() => {updateQuestions(deleteAnswer(questions, qInd, aInd))}}>✖</button>
                                                             {/* answer content */}
                                                             <input type="text" name="content" value={questions[qInd].answers[aInd].content} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd, aInd, 'content'))}/>
                                                             {/* points content */}
@@ -88,17 +98,20 @@ function QuizEditor(props){
                                                     )
                                                 })
                                             }      
-                                            <button className="addAns" onClick={() => updateQuestions(addAnswer(questions, qInd, emptyAnswer))}>Add Answer</button>
+                                            <button type='button' className="addAns" onClick={() => updateQuestions(addAnswer(questions, qInd, emptyAnswer))}>Add Answer</button>
                                         </div>
-                                        <button onClick={() => {updateQuestions([...questions.slice(0 , qInd), ...questions.slice(qInd + 1)])}}>Delete Question</button>
+                                        <button type='button' onClick={() => {updateQuestions([...questions.slice(0 , qInd), ...questions.slice(qInd + 1)])}}>Delete Question</button>
                                     </div>
                                 )
                             })
                         }
-                        <button onClick={() => {updateQuestions([...questions, emptyQuestion])}}>Add Question</button>
+                        <button type='button' onClick={() => {updateQuestions([...questions, emptyQuestion])}}>Add Question</button>
                     </div>
                 </div>
-                <button className="submitForm">{props.action}</button>
+                <button onClick={() => {setAction(props.action)}} className="submitForm">{props.action}</button>
+                {
+                    props.action === 'Edit'?<button className="submitForm"  onClick={() => {setAction('Delete')}} >Delete</button>:null
+                }
             </form>
         </div>
     )
