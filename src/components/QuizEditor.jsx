@@ -9,18 +9,21 @@ async function handleSubmit(e, title, description, questions, action, id){
         questions: questions
     }
     e.preventDefault()
-    if (action === 'Edit'){
-        console.log('edit')
-        await myApi.editQuiz(id, quiz)
-    }
-    else if(action === "Create"){
-        await myApi.createQuiz(quiz)
+    if (action === 'Delete'){
+        await myApi.deleteQuiz(id)
+        window.location.href = '/quiz/all'
     }
     else{
-        await myApi.deleteQuiz(id)
+        if (action === 'Edit'){
+            console.log('edit')
+            await myApi.editQuiz(id, quiz)
+        }
+        else if(action === "Create"){
+            id = (await myApi.createQuiz(quiz)).data.createdId
+        }
+        console.log(id)
+        window.location.href = `/quiz/${id}`
     }
-
-    window.location.href = '/quiz/all'
 }
 
 function addAnswer(questions, qInd, emptyAnswer){
