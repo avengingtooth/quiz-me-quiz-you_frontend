@@ -2,18 +2,18 @@ import { useEffect } from "react"
 import { useState } from "react"
 import Answer from "./Answer"
 
-function Question(props){
+function Question(props) {
     const [selected, setAnswer] = useState(null)
     useEffect(() => {
-        
+
     }, [selected])
-    return(
+    return (
         <div className="question">
             <h2>{props.title}</h2>
             <div className="answerContainer">
                 {
                     props.answers.map((ans, ind) => {
-                        return(
+                        return (
                             <Answer key={ind} selected={selected} ind={ind} ans={ans} setAnswer={setAnswer}></Answer>
                         )
                     })
