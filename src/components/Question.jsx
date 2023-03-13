@@ -1,4 +1,12 @@
+import { useEffect } from "react"
+import { useState } from "react"
+import Answer from "./Answer"
+
 function Question(props){
+    const [selected, setAnswer] = useState(null)
+    useEffect(() => {
+        props.setAnswer(selected)
+    }, [selected])
     return(
         <div className="question">
             <h2>{props.title}</h2>
@@ -6,9 +14,7 @@ function Question(props){
                 {
                     props.answers.map((ans, ind) => {
                         return(
-                            <button key={ind} points={ans.points} className="answer">
-                                <p>{ans.content}</p>
-                            </button>
+                            <Answer key={ind} selected={selected} ind={ind} ans={ans} setAnswer={setAnswer}></Answer>
                         )
                     })
                 }

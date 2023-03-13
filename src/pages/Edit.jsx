@@ -20,7 +20,7 @@ function Edit(){
         return(
             <div className="editContainer">
                 <h1>Edit Quiz</h1>
-                <QuizEditor quiz={quiz} action='Edit'></QuizEditor>
+                <QuizEditor quiz={quiz} id={id} action='Edit'></QuizEditor>
             </div>
         )
     }

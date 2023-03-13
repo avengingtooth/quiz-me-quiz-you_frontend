@@ -18,11 +18,12 @@ myApi.getQuiz = (quizId) => {
     return myApi.get(`/quiz/getId/${quizId}`)
 }
 
-// myApi.createLobby = () => {
-//     socket.io.on("connection", () => {
-//         console.log('id')
-//     })
-//     // return myApi.post('/multiplayer/create')
-// }
+myApi.editQuiz = (quizId, updatedQuiz) => {
+    return myApi.post("/quiz/edit", {updatedQuiz, quizId})
+}
+
+myApi.deleteQuiz = (quizId) => {
+    return myApi.post("/quiz/delete", {quizId})
+}
 
 export default myApi
