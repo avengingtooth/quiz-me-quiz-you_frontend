@@ -13,9 +13,12 @@ import Edit from './pages/Edit';
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 import Feed from './pages/Feed'
-import SingleQuizView from './pages/SingleQuizView';
+// import SingleQuizView from './pages/SingleQuizView';
 import Home from './pages/Home'
 import Navbar from './components/Navbar';
+import QuizStart from './pages/QuizStart';
+import QuizQuestion from './pages/QuizQuestion';
+import QuizResult from './pages/QuizResult';
 
 function App() {
   return (
@@ -25,10 +28,12 @@ function App() {
           <Route path='/' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<SignUp />}></Route>
-          <Route path='/quiz/all' element={<Feed />}></Route> 
-          <Route path='/quiz/create' element={<Create />}></Route>  
-          <Route path='/quiz/:id' element={<SingleQuizView />}></Route>  
-          <Route path='/quiz/:id/edit' element={<Edit />}></Route>  
+          <Route path='/quiz/all' element={<Feed />}></Route>
+          <Route path='/quiz/create' element={<Create />}></Route>
+          <Route path='/quiz/start/:id' element={<QuizStart />}></Route>
+          <Route path='/quiz/question' element={<QuizQuestion />}></Route>
+          <Route path='/quiz/result' element={<QuizResult />}></Route>
+          <Route path='/quiz/:id/edit' element={<Edit />}></Route>
         </Route>
       </Routes>
     </div>
