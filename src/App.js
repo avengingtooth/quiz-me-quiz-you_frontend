@@ -37,7 +37,7 @@ function App() {
           <Route path='/multiplayer/select' element={<SelectQuiz />}></Route>
           <Route path='/multiplayer/createLobby/:id' element={<CreateLobby />}></Route>
           <Route path='/multiplayer/join' element={<JoinGame />}></Route>
-          <Route path='/multiplayer/play/:gameId' element={<Game />}></Route>
+          <Route path='/multiplayer/play/:gameId/:username' element={<Game />}></Route>
         </Route>
       </Routes>
     </div>
