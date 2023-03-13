@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import QuizPreview from '../components/QuizPreview.jsx'
 import myApi from '../service/api.js'
+import MultipleQuizView from '../components/MultipleQuizView'
 
 function Feed(){
     const [quizzes, setQuizzes] = useState([])
@@ -9,22 +9,13 @@ function Feed(){
             .getQuizzes(20)
             .then(res => setQuizzes(res.data.quizzes))
             .catch(error => console.log(error))
-        console.log(quizzes)
     }, [])
 
     return(
         <div id="feed">
             <h1>Discover quizzes</h1>
             {/* maybe add a search bar here */}
-            <div id='viewQuizzes'>
-                {
-                    quizzes.map(quiz => {
-                        return(
-                            <QuizPreview key={quiz._id} _id={quiz._id} title={quiz.title} description={quiz.description}></QuizPreview>
-                        )
-                    })
-                }
-            </div>
+            <MultipleQuizView quizzes={quizzes} nextRoute={'/quiz/'}></MultipleQuizView>
         </div>
     )
 }

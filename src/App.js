@@ -16,6 +16,8 @@ import Feed from './pages/Feed'
 import SingleQuizView from './pages/SingleQuizView';
 import Home from './pages/Home'
 import Navbar from './components/Navbar';
+import CreateLobby from './pages/CreateLobby';
+import SelectQuiz from './pages/SelectQuiz'
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
           <Route path='/quiz/create' element={<Create />}></Route>  
           <Route path='/quiz/:id' element={<SingleQuizView />}></Route>  
           <Route path='/quiz/:id/edit' element={<Edit />}></Route>  
+          <Route path='/multiplayer/select' element={<SelectQuiz />}></Route>
+          <Route path='/multiplayer/createLobby/:id' element={<CreateLobby />}></Route>
         </Route>
       </Routes>
     </div>

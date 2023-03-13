@@ -18,4 +18,11 @@ myApi.getQuiz = (quizId) => {
     return myApi.get(`/quiz/getId/${quizId}`)
 }
 
+// myApi.createLobby = () => {
+//     socket.io.on("connection", () => {
+//         console.log('id')
+//     })
+//     // return myApi.post('/multiplayer/create')
+// }
+
 export default myApi
