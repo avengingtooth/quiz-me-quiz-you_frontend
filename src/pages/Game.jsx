@@ -9,6 +9,8 @@ function Game(){
     const [gameState, setGameState] = useState(false)
     const [curAnswer, setAnswer] = useState(-1)
     const [clientSocket, setSocket] = useState(null)
+    const [players, addPlayer] = useState([])
+    const [error, setError] = useState("")
 
 
     useEffect(() => {
@@ -17,38 +19,42 @@ function Game(){
         setSocket(socket)
 
         socket.on('join-success', success => {
-            if(success){
+            if(success.status){
                 setGameState('start')
             }
             else{
                 setGameState(false)
+                setError(success.error)
             }
         })
 
         socket.on('question', questionData => {
-            console.log(gameId, 'sending game id')
             setQuestion(questionData)
-            socket.emit('updateAnswer', {aInd: -1, gameId})
+            setAnswer(-1)
+            socket.emit('updateAnswer', {aInd: -1, gameId: gameId})
         })
 
         socket.on('gameState', () => {
-            setQuestion('')
             setGameState('game-over')
+        })
+
+        socket.on('player-joined', (username) => {
+            console.log(username)
         })
     }, [])
 
     useEffect(() => {
         if(clientSocket){
-            console.log(gameId, 'sending game id')
-            clientSocket.emit('updateAnswer', {aInd: curAnswer, gameId})
+            clientSocket.emit('updateAnswer', {aInd: curAnswer, gameId: gameId})
         }
         else{
             console.log('not connected yet')
         }
     }, [curAnswer])
+
     return(
         <div>
-            <h1>In game: {gameId}</h1>
+            {console.log(question, gameState, 'lmoa')}
             { 
                 gameState !== false
                     ?question
@@ -56,7 +62,7 @@ function Game(){
                         :gameState === 'start'
                             ?<h1>The Game has not started yet</h1>
                             :<h1>Results page</h1>
-                    :<h1>The game id is incorrect</h1>
+                    :<h1>{error}</h1>
             }
         </div>
     )
