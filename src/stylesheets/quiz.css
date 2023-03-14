@@ -42,7 +42,3 @@
     margin: auto auto 5% auto;
     border-radius: 30%/40%;
 }
-
-#quiz .selectedAnswer{
-    background-color: blue;
-}

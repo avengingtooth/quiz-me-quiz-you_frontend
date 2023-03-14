@@ -40,9 +40,15 @@
 
 .answer{
     padding: 7%;
+    border: 3px transparent solid;
 }
 
 .addAns{
     padding: 17% 7% 17% 7%;
     background-color: #ab3e99;
+}
+
+
+.selectedAnswer{
+    border: 3px black solid;
 }
