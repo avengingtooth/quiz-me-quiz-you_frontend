@@ -31,7 +31,7 @@ function App() {
           <Route path='/quiz/all' element={<Feed />}></Route>
           <Route path='/quiz/create' element={<Create />}></Route>
           <Route path='/quiz/start/:id' element={<QuizStart />}></Route>
-          <Route path='/quiz/question' element={<QuizQuestion />}></Route>
+          <Route path='/quiz/question/:quizId/:questionId' element={<QuizQuestion />}></Route>
           <Route path='/quiz/result' element={<QuizResult />}></Route>
           <Route path='/quiz/:id/edit' element={<Edit />}></Route>
         </Route>

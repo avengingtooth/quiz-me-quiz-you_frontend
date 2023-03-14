@@ -7,14 +7,16 @@ function QuizStart() {
     const [quiz, setQuiz] = useState(null);
     const { id } = useParams();
     const navigate = useNavigate();
-    const handleClick = () => navigate(`/quiz/${quiz.id}/0`);
+    const handleClick = () => navigate(`/quiz/question/${quiz._id}/${quiz.questions[0]} `);
 
     useEffect(() => {
         myApi
-            .getQuiz(id)
+            .getUnPopulatedQuiz(id)
             .then((res) => setQuiz(res.data.quiz))
             .catch(error => { console.log(error) })
     }, [id])
+
+    console.log(quiz)
 
     if (!quiz) {
         return <div className="loading">Loading...</div>
@@ -25,10 +27,8 @@ function QuizStart() {
             <div className='QuizStart' >
 
                 <h1>{quiz.title}</h1>
-
                 <p className="description">{quiz.description}</p>
-
-                <button onClick={handleClick} id="startQuiz" > Start the quiz</button>
+                <button onClick={handleClick} id="startQuiz">Start the quiz</button>
 
             </div >
         </>

@@ -7,7 +7,7 @@ const myApi = axios.create({
 })
 
 myApi.createQuiz = (quiz) => {
-    return myApi.post('/quiz/create', {quiz})
+    return myApi.post('/quiz/create', { quiz })
 }
 
 myApi.getQuizzes = (count) => {
@@ -19,11 +19,20 @@ myApi.getQuiz = (quizId) => {
 }
 
 myApi.editQuiz = (quizId, updatedQuiz) => {
-    return myApi.post("/quiz/edit", {updatedQuiz, quizId})
+    return myApi.post("/quiz/edit", { updatedQuiz, quizId })
 }
 
 myApi.deleteQuiz = (quizId) => {
-    return myApi.post("/quiz/delete", {quizId})
+    return myApi.post("/quiz/delete", { quizId })
+}
+
+myApi.getUnPopulatedQuiz = (id) => {
+    return myApi.get(`/quiz/getQuestionIds/${id}`)
+}
+
+myApi.getQuestion = (questionId) => {
+    console.log("hi")
+    return myApi.get(`/quiz/getQuestion/${questionId}`)
 }
 
 export default myApi
