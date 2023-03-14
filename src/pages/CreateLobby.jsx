@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import myApi from '../service/api.js'
 import socketIOClient from 'socket.io-client'
 import { useParams } from 'react-router-dom'
-import Results from "../components/Results.jsx"
+import Lobby from "../components/Lobby.jsx"
 
 function nextQuestion(socket){
     socket.emit('sendQuestion')
@@ -13,7 +13,10 @@ function CreateLobby(){
     const [message, setMessage] = useState('')
     const [lobbyCode, setLobbyCode] = useState(null)
     const [clientSocket, setSocket] = useState(null)
+    const [gameState, setGameState] = useState('await-start')
+    const [error, setError] = useState("")
     const [scores, setScores] = useState(null)
+    const [players, setPlayers] = useState([])
 
     useEffect(() => {
         const socket = socketIOClient('http://localhost:4000/')
@@ -33,8 +36,18 @@ function CreateLobby(){
             setLobbyCode(code)
         })
 
-        socket.on('final-scores', scores => {
+        socket.on('scores', data => {
+            let {scores, players} = data
             setScores(scores)
+            setPlayers(players)
+        })
+
+        socket.on('gameState', state => {
+            setGameState(state)
+        })
+
+        socket.on('error', err => {
+            setError(err)
         })
     },[])
     return(
@@ -46,13 +59,9 @@ function CreateLobby(){
                     :<p>No lobby</p>
             }
 
-            {
-                scores
-                    ?<Results scores={scores}></Results>
-                    :<p>playing</p>
-            }
+            <Lobby  scores={scores} players={players} gameState={gameState} error={error}></Lobby>
 
-            <button onClick={() => nextQuestion(clientSocket)}>Next Question</button>
+            <button onClick={() => nextQuestion(clientSocket)} style={{backgroundColor: 'black', color: 'white'}}>Next Question</button>
         </div>
     )
 }

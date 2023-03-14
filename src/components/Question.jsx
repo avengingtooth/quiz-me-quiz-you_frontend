@@ -1,12 +1,8 @@
-import { useEffect } from "react"
-import { useState } from "react"
 import Answer from "./Answer"
 
 function Question(props){
-    const [selected, setAnswer] = useState(null)
-    useEffect(() => {
-        props.setAnswer(selected)
-    }, [selected])
+    let { setAnswer, selected } = props
+
     return(
         <div className="question">
             <h2>{props.title}</h2>

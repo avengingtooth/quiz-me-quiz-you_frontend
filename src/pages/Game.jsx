@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import socketIOClient from 'socket.io-client'
-import Question from '../components/Question'
+import AwaitStart from '../components/AwaitStart'
+import Playing from '../components/Playing'
+import Results from '../components/GameResults'
+import ErrorPage from '../components/ErrorPage'
 
 function Game(){
     let { gameId, username } = useParams()
     const [question, setQuestion] = useState('')
-    const [gameState, setGameState] = useState(false)
+    const [gameState, setGameState] = useState('waiting')
     const [curAnswer, setAnswer] = useState(-1)
     const [clientSocket, setSocket] = useState(null)
-    const [players, addPlayer] = useState([])
+    const [scores, setScores] = useState(null)
+    const [players, setPlayers] = useState([])
     const [error, setError] = useState("")
 
 
@@ -18,28 +22,25 @@ function Game(){
         socket.emit('join', {gameId, username})
         setSocket(socket)
 
-        socket.on('join-success', success => {
-            if(success.status){
-                setGameState('start')
-            }
-            else{
-                setGameState(false)
-                setError(success.error)
-            }
-        })
-
         socket.on('question', questionData => {
             setQuestion(questionData)
             setAnswer(-1)
             socket.emit('updateAnswer', {aInd: -1, gameId: gameId})
         })
 
-        socket.on('gameState', () => {
-            setGameState('game-over')
+        socket.on('gameState', state => {
+            setGameState(state)
         })
 
-        socket.on('player-joined', (username) => {
-            console.log(username)
+        socket.on('error', err => {
+            setError(err)
+        })
+
+        socket.on('scores', data => {
+            console.log('scores', data)
+            let {scores, players} = data
+            setScores(scores)
+            setPlayers(players)
         })
     }, [])
 
@@ -54,15 +55,14 @@ function Game(){
 
     return(
         <div>
-            {console.log(question, gameState, 'lmoa')}
-            { 
-                gameState !== false
-                    ?question
-                        ?<Question setAnswer={setAnswer} title={question.questionText} answers={question.answers}></Question>
-                        :gameState === 'start'
-                            ?<h1>The Game has not started yet</h1>
-                            :<h1>Results page</h1>
-                    :<h1>{error}</h1>
+            
+            {   
+                !error
+                    ?gameState === 'await-start'?<AwaitStart scores={scores} players={players}></AwaitStart>
+                    :gameState === 'playing'?<Playing scores={scores} players={players} curAnswer={curAnswer} setAnswer={setAnswer} title={question.questionText} answers={question.answers}></Playing>
+                    :gameState === 'game-over'?<Results scores={scores} players={players}></Results>
+                    :''
+                :<ErrorPage error={error}></ErrorPage>
             }
         </div>
     )
