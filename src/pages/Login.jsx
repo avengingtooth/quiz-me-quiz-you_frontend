@@ -2,35 +2,33 @@ import { useState, useContext } from "react"
 import EssentialAuth from "../components/EssentialAuth"
 import { useNavigate } from "react-router-dom";
 import myApi from "../service/api"
-import { AuthContext } from "../context/auth.context";  
+import { AuthContext } from "../context/authContext";
 
 
 const API_URL = "http://localhost:5005";
 
-function Login(props) {
+function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errorMessage, setErrorMessage] = useState(undefined);
+    const { authenticateUser } = useContext(AuthContext)
+
 
     const navigate = useNavigate();
     const { storeToken } = useContext(AuthContext);
 
-    const handleLoginSubmit = (e) => {
+    const handleLoginSubmit = async (e) => {
         e.preventDefault()
-        myApi.post('/auth/login', { username, password })
-        .then((response) => {
-            
-              console.log('JWT token', response.data.authToken );
-            
-              storeToken(response.data.authToken);
+        const userToLogin = { username, password }
 
-              navigate('/');  
-
-            })
-            .catch((error) => {
-              const errorDescription = error.response.data.message;
-              setErrorMessage(errorDescription);
-            })
+        try {
+          const response = await myApi.post('/auth/login', userToLogin)
+          console.log(response)
+          storeToken(response.data.authToken)
+           authenticateUser()
+        } catch (error) {
+          console.error(error)
+        }
     };
     
     return (

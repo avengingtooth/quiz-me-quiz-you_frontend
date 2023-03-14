@@ -15,7 +15,7 @@ function checkOverall(fields, updateOverallValidity) {
     updateOverallValidity(allValid)
 }
 
-function SignUp(props) {
+function SignUp() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
@@ -31,6 +31,7 @@ function SignUp(props) {
             updatePswValidity(true)
             // passing true instead of the validPsw state variable because it doesnt update quick enough
             checkOverall([uniqueUsername, true], updateOverallValidity)
+            console.log('psw crt')
         }
         else {
             console.log('set false')
@@ -41,7 +42,7 @@ function SignUp(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(username + '' + password)
+        console.log(username + ' ' + password)
         if (password !== confirmPassword) {
             return
         }
