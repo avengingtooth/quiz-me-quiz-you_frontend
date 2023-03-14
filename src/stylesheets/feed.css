@@ -3,7 +3,7 @@
     padding: 0 5% 0 5%;
 }
 
-#feed .preview{
+#viewQuizzes .preview{
     position: inline;
     background-color: #F9C74F;
     box-shadow: 1px 2px 4px 0px white;
@@ -13,7 +13,7 @@
     overflow: scroll;
 }
 
-#feed #viewQuizzes{
+#viewQuizzes{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2%;
