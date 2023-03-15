@@ -1,28 +1,25 @@
-:root{
-    --answerRadius: 10px
-}
-
 #quiz{
-    display: flex;
-    flex-direction: column;
-    background-color: #073B4C;
-    width: 60%;
-    margin: 10% 5% 5% 5%;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 8%/10%;
-    overflow: scroll;
+    margin: 5% 5% 5% 5%;
 }
 
 #quiz h1{
-    color: white;
-    margin-bottom: 0;
+    font-size: 3rem;
+    color: #010190;
+    margin-bottom: 0.5rem;
 }
 
 #quiz h2{
     text-align: left;
-    margin: 0;
-    padding: 5%;
+    padding-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.description {
+    font-size: 1.3rem;
+    color: #010190;
+    font-weight: 600;
+    margin: 1rem;
+    backdrop-filter: blur(2rem) saturate(80%);
 }
 
 .question{
@@ -30,15 +27,20 @@
     flex-direction: column;
     justify-content: space-evenly;
     margin: 5%;
-    background-color: white;
+    background-color: rgb(255, 220, 245);
     padding: 5%;
     border-radius: 10%/20%;
+    border: 1px solid white;
+    color: #010190;
+    font-weight: 600;
 }
 
 #quiz #submitQuiz{
-    background-color: white;
-    padding: 3% 5% 3% 5%;
+    background-color: rgb(255, 220, 245);
+    padding: 3% 6%;
     width: fit-content;
-    margin: auto auto 5% auto;
-    border-radius: 30%/40%;
+    margin-bottom: 5%;
+    border-radius: 20px;
+    color: #010190;
+    font-weight: 600;
 }
