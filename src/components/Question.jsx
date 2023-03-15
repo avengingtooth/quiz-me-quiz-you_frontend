@@ -9,6 +9,7 @@ function Question(props){
             <div className="answerContainer">
                 {
                     props.answers.map((ans, ind) => {
+                        console.log(ind)
                         return(
                             <Answer key={ind} selected={selected} ind={ind} ans={ans} setAnswer={setAnswer}></Answer>
                         )

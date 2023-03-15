@@ -25,7 +25,7 @@ function SingleQuizView(){
             {
                 quizData.questions.map((question, ind) => {
                     return(
-                        <Question key={`${question.title}${ind}`} selectedResponses={selectedResponses} addScore={addScore} total={total} title={question.questionText} answers={question.answers}></Question>
+                        <Question key={`${question.title}${ind}`} setAnswer={setResponse} selected={selectedResponses} addScore={addScore} total={total} title={question.questionText} answers={question.answers}></Question>
                     )
                 })
             }
