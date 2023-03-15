@@ -1,6 +1,7 @@
 import AllUsernames from "./AllUsernames"
 
 function AwaitStart(props){
+    // waiting for start on player side
     let { scores, players } = props
     return(
         <div>

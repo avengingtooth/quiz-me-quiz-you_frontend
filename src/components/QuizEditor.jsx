@@ -2,6 +2,7 @@ import { useState } from "react"
 import myApi from '../service/api.js'
 
 async function handleSubmit(e, title, description, questions, action, id){
+    console.log('submit')
     let quiz = {
         owner: 'Bob',
         title: title,
@@ -58,7 +59,6 @@ function QuizEditor(props){
     const [questions, updateQuestions] = useState(props.quiz.questions)
     const [action, setAction] = useState('')
 
-    console.log(title, description, questions, 'hi')
 
     // sets the defaults for when adding a questions or answer element
     const emptyAnswer = {

@@ -1,14 +1,12 @@
-import { useEffect } from "react"
 import { useState } from "react"
-
 
 function handleSubmit(e, gameId, username){
     e.preventDefault()
-    // check if game exists
-    window.location.href =`/multiplayer/play/${gameId}/${username}`
+    window.location.href =`/multiplayer/play/${gameId} /${username} /`
 }
 
 function JoinGame(){
+    // form for players to enter code to join a multiplayer game
     const [gameId, updateGameId] = useState('')
     const [name, updateName] = useState('')
     return(

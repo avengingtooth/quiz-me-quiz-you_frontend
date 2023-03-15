@@ -1,7 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 
 function Navbar(){
-    console.log('nav')
     
     return(
         <>

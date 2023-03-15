@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react" 
-import myApi from '../service/api.js'
 import socketIOClient from 'socket.io-client'
 import { useParams } from 'react-router-dom'
+import myApi from '../service/api.js'
 import Lobby from "../components/Lobby.jsx"
 
 function nextQuestion(socket){

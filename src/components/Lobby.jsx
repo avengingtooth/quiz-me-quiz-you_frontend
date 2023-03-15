@@ -2,6 +2,10 @@ import AllUsernames from "./AllUsernames"
 import Leaderboard from "./Leaderboard"
 
 function Lobby(props){
+    // multiplayer host display
+    // scores is a state of type Object with the playerId = {username: ..., scores:...}
+    // players is a state of type Array of all player ids
+    // error is a state equal to an error message
     let { scores, players, gameState, error } = props
     if (gameState === 'await-start'){
         return(

@@ -59,10 +59,10 @@ function Game(){
             {   
                 !error
                     ?gameState === 'await-start'?<AwaitStart scores={scores} players={players}></AwaitStart>
-                    :gameState === 'playing'?<Playing scores={scores} players={players} curAnswer={curAnswer} setAnswer={setAnswer} title={question.questionText} answers={question.answers}></Playing>
+                    :gameState === 'playing'?<Playing id={clientSocket?clientSocket.id:''} scores={scores} players={players} curAnswer={curAnswer} setAnswer={setAnswer} title={question.questionText} answers={question.answers}></Playing>
                     :gameState === 'game-over'?<Results scores={scores} players={players}></Results>
                     :''
-                :<ErrorPage error={error}></ErrorPage>
+                :<ErrorPage actionText='Ok' redirection='/multiplayer/join' error={error}></ErrorPage>
             }
         </div>
     )

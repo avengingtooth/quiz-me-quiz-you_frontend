@@ -1,4 +1,6 @@
 function Leaderboard(props){
+    // shows all usernames and their scores
+    // #TODO needs to be ordered
     let { scores, players } = props
     return(
         <div>
