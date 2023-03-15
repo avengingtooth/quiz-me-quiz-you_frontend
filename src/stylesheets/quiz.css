@@ -44,3 +44,16 @@
     color: #010190;
     font-weight: 600;
 }
+
+.multiplay-quizzes-view {
+    margin: 1rem;
+    color: rgb(255, 220, 245);
+}
+
+.multiplay-quizzes-descipt {
+ margin: 0.5rem;
+}
+
+.multiplay-quizzes-title {
+    margin: 1rem;
+}

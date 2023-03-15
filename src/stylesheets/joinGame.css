@@ -1,0 +1,33 @@
+.join-multiplay-title {
+    font-size: 3rem;
+    margin: 3rem 0;
+}
+
+.join-game-form {
+    margin-top: 2rem;
+display: flex;
+flex-direction: column;
+gap: 3rem;
+
+}
+
+.join-game-input {
+    text-align: left;
+    background-color: rgb(255, 220, 245);
+    border: 1px solid #010190;
+    font-size: 1rem;
+    color: #010190;
+    border-radius: 5px;
+    padding: 1rem 3rem;
+}
+
+.join-multiplay-game {
+    padding: 1rem 5rem;
+    background-color: #010190;
+    border: 1px solid #010190;
+    font-size: 1rem;
+    color: rgb(255, 220, 245);
+    border-radius: 25px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}

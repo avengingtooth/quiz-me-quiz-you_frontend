@@ -1,24 +1,26 @@
 .editContainer{
     display: flex;
     flex-direction: column;
-    background-color: #073B4C;
-    width: 60%;
+    background-color: rgb(255, 220, 245);
+    width: 80%;
     margin: 10% 5% 5% 5%;
-    border-radius: 8%/10%;
-    overflow: scroll;
-    height: 100%;
+    border-radius: 20px;
+    overflow: scroll;    
 }
 
 .editContainer input{
-    margin: 2% 0 2% 0;
+    margin: 7% 0 2% 0;
     padding: 2%;
-    background-color: aliceblue;
+    background-color: rgb(255, 220, 245);
+    border: 1px solid #010190;
+    font-size: 1rem;
+    color: #010190;
+    border-radius: 5px;
 }
 
 .editContainer .editor{
     display: flex;
     flex-direction: column;
-    height: 100%;
     justify-content: space-between;
 }
 
@@ -29,20 +31,39 @@
 }
 
 .editContainer form{
-    height: 100%;
     overflow: scroll;
 }
 
 .editContainer textarea{
-    height: 10vh;
+    height: 5vh;
 }
 
 .editContainer .title, .editContainer textarea{
     margin-bottom: 5%;
     text-align: left;
-    background-color: aliceblue;
+    background-color: rgb(255, 220, 245);
+    border: 1px solid #010190;
+    font-size: 1rem;
+    color: #010190;
+    border-radius: 5px;
 }
 
 .editContainer .submitForm{
-    padding-bottom: 5%;
+    padding: 0.5rem 5rem;
+    background-color: rgb(255, 220, 245);
+    border: 1px solid #010190;
+    font-size: 1rem;
+    color: #010190;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
 }
+
+.add-question-button {
+    margin: 0.3rem 0 0 0;
+    padding: 0.6rem 3.5rem;
+    background-color: #010190;
+    color: rgb(255, 220, 245);
+    border-radius: 20px;
+    font-weight: 600;
+    }
