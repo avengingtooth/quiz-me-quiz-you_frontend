@@ -26,7 +26,10 @@ function MultipleQuizView(props){
     return(
         <>
             <label>
-                <input type="text" value={query} onChange={e => updateQuery(e.target.value)}/>
+                <input type="text" value={query} onChange={e => {
+                    updateQuery(e.target.value)
+                    setOffset(0)
+                }}/>
                 <button >Search</button>
             </label>
             <div id='viewQuizzes'>

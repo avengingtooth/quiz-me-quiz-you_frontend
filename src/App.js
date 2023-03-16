@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import 'animate.css';
 
 import './App.css';
 import './stylesheets/auth.css'
@@ -9,7 +10,6 @@ import './stylesheets/edit-create.css'
 import './stylesheets/answer.css'
 import './stylesheets/game.css'
 import './stylesheets/home.css'
-import 'animate.css';
 import './stylesheets/login.css'
 import './stylesheets/joinGame.css'
 import './stylesheets/createLobby.css'

@@ -23,6 +23,12 @@ function Game(){
     const [error, setError] = useState("")
 
     useEffect(() => {
+        // 
+        // 
+        // 
+        // 
+        // 
+        // 
         const socket = socketIOClient('http://localhost:4000/')
         socket.emit('join', {gameId, username})
         setSocket(socket)

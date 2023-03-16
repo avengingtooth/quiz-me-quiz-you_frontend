@@ -8,6 +8,12 @@ const myApi = axios.create({
 
 // quiz crud
 
+myApi.interceptors.request.use(request => {
+    const token = localStorage.getItem('token')
+    request.headers.Authorization = token ? `Bearer ${token}` : ''
+    return request
+})
+
 myApi.createQuiz = (quiz) => {
     return myApi.post('/quiz/create', {quiz})
 }
@@ -30,7 +36,6 @@ myApi.correctQuiz = (id, answers) => {
 }
 
 // fetching quiz information
-
 myApi.getQuizzes = (offset, count, query) => {
     return myApi.get(`/quiz/getMultiple/${count}/${offset}/${query?query:' '}/`)
 }
