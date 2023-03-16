@@ -1,10 +1,7 @@
 import axios from 'axios'
-import env from "react-dotenv";
 
-// env.config({path: '../../.env'})
+const BACKEND_URL = "http://localhost:5005/"
 
-const BACKEND_URL = process.env.REACT_APP_ORIGIN;
-console.log(BACKEND_URL)
 
 const myApi = axios.create({
     baseURL: BACKEND_URL,

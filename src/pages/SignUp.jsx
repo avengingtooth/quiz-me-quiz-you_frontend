@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import EssentialAuth from "../components/EssentialAuth"
 import myApi from "../service/api"
+import { Navigate, useNavigate} from 'react-router-dom'
+
 
 
 function checkOverall(fields, updateOverallValidity) {
@@ -22,6 +24,8 @@ function SignUp() {
     const [validPsw, updatePswValidity] = useState(false)
     const [uniqueUsername, updateUniqueUsername] = useState(false)
     const [allFieldsValid, updateOverallValidity] = useState(false)
+    const navigate = useNavigate()
+
 
     // changes the classname depending on if password is valid or not
     // add client side checks for password secure enought before allowing to validate 
@@ -40,13 +44,23 @@ function SignUp() {
         }
     }, [confirmPassword, password])
 
-    const handleSubmit = (e) => {
+    async function handleSubmit(e) {
         e.preventDefault()
-        console.log(username + ' ' + password)
+
         if (password !== confirmPassword) {
             return
         }
-        myApi.post('/auth/signup', { username, password })
+
+        try {
+            const response = await myApi.post('/auth/signup', { username, password })
+            if (response.status === 201) {
+              navigate('/login')
+            }
+          } catch (error) {
+            console.log(error)
+
+          }
+        // myApi.post('/auth/signup', { username, password })
     }
 
 
@@ -65,6 +79,7 @@ function SignUp() {
                     <input placeholder="Confirm password" onChange={event => setConfirmPassword(event.target.value)} type="password" />
                 </label>
                 <div>
+                    
                     <p className="error" id="hiddenHoverTxt">Not all fields are valid</p>
                     <div className={`${allFieldsValid ? 'validSubmit' : 'invalidSubmit'} submit`}>
                         <button className="create-account-btn">Create Account</button>
