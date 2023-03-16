@@ -2,7 +2,6 @@ import { useState } from "react"
 
 function handleSubmit(e, gameId, username){
     e.preventDefault()
-    console.log(username)
     window.location.href =`/multiplayer/play/${gameId}/${username}/`
 }
 
@@ -11,11 +10,14 @@ function JoinGame(){
     const [gameId, updateGameId] = useState('')
     const [username, updateName] = useState('')
     return(
-        <form onSubmit={e => handleSubmit(e, gameId, username)}>
-            <input type="text" value={gameId} onChange={e => updateGameId(e.target.value)}/>
-            <input type="text" value={username} onChange={e => updateName(e.target.value)}/>
-            <button>Join Game</button>
-        </form>
+        <>
+            <h1 className="join-multiplay-title">JOIN THE MULTIPLAYER GAME</h1>
+            <form className="join-game-form" onSubmit={e => handleSubmit(e, gameId, username)}>
+                <input className="join-game-input" type="text" placeholder="Game Id" value={gameId} onChange={e => updateGameId(e.target.value)} />
+                <input className="join-game-input" type="text" placeholder="Username" value={username} onChange={e => updateName(e.target.value)} />
+                <button className="join-multiplay-game">Join Game</button>
+            </form>
+        </>
     )
 }
 

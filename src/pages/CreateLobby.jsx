@@ -4,11 +4,11 @@ import { useParams } from 'react-router-dom'
 import myApi from '../service/api.js'
 import Lobby from "../components/Lobby.jsx"
 
-function nextQuestion(socket){
+function nextQuestion(socket) {
     socket.emit('sendQuestion')
 }
 
-function CreateLobby(){
+function CreateLobby() {
     let { id } = useParams()
     const [message, setMessage] = useState('')
     const [lobbyCode, setLobbyCode] = useState(null)
@@ -37,7 +37,7 @@ function CreateLobby(){
         })
 
         socket.on('scores', data => {
-            let {scores, players} = data
+            let { scores, players } = data
             setScores(scores)
             setPlayers(players)
         })
@@ -49,17 +49,18 @@ function CreateLobby(){
         socket.on('error', err => {
             setError(err)
         })
-    },[])
-    return(
-        <div>
-            <p>{message}</p>
+    }, [])
+    return (
+
+        <div className="create-lobby-container">
+            <p className="create-lobby-text">{message}</p>
             {
                 lobbyCode
-                    ?<p>To join enter code: {lobbyCode}</p>
-                    :<p>No lobby</p>
+                    ? <p className="create-lobby-text">To join enter code: {lobbyCode}</p>
+                    : <p className="create-lobby-text">No lobby</p>
             }
 
-            <Lobby  scores={scores} players={players} gameState={gameState} error={error}></Lobby>
+            <Lobby className="create-lobby-text" scores={scores} players={players} gameState={gameState} error={error}></Lobby>
 
             {   
                 gameState !== 'game-over'

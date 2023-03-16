@@ -1,12 +1,10 @@
-
-
-/* body{
-    background-color: white;
+body{
+    background-color: rgb(206, 98, 98);
 }
 
 .App{
-    background-color: white;
-} */
+    background-color: rgb(199, 89, 89);
+}
 
 input{
     border: 1px black solid;

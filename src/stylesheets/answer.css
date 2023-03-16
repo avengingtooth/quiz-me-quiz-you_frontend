@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding-bottom: 5%;
+
 }
 
 .answer:nth-child(4n + 1){
@@ -17,7 +18,7 @@
 }
 
 .answer:nth-child(4n){
-    background-color: #118AB2;
+    background-color: #87e0f9;
 }
 
 
@@ -44,8 +45,20 @@
 }
 
 .addAns{
-    padding: 17% 7% 17% 7%;
-    background-color: #ab3e99;
+    margin: 0.5rem 0;
+    padding: 0.6rem 4rem;
+    background-color: #010190;
+    color: rgb(255, 220, 245);
+    border-radius: 20px;
+}
+
+.delete-button {
+    margin: 0.5rem 0;
+    padding: 0.6rem 0;
+    background-color: rgb(255, 220, 245);
+    color: #010190;
+    border-radius: 20px;
+    border: 1px solid #010190;
 }
 
 

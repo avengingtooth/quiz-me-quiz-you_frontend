@@ -1,0 +1,33 @@
+.create-lobby-container {
+display: flex;
+flex-direction: column;
+margin-top: 4rem;
+gap: 2rem;
+backdrop-filter: blur(1rem) saturate(90%);
+}
+
+.create-lobby-text {
+    color: #010190;
+    font-size: 1.5rem;
+    margin: 0.7rem 2rem;
+    text-transform: uppercase;
+}
+
+.multiplay-start-btn {
+    padding: 1rem 0;
+    margin: 5rem 2.5rem 0;
+    background-color: #010190;
+    color: rgb(228, 235, 251);
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+    border-radius: 30px;
+    line-height: 1.4rem;
+    letter-spacing: 0.5px;
+}
+
+.error-message-text {
+    color: #010190;
+    font-size: 1.5rem;
+    margin: 0.7rem 2rem;
+    text-transform: uppercase;
+}

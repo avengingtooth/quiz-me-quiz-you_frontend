@@ -58,7 +58,7 @@ function SignUp() {
     }, [username])
     return (
         <>
-            <h1>Register</h1>
+            <h1 className="sign-up-title">Register</h1>
             <form className="auth" onSubmit={handleSubmit}>
                 <EssentialAuth validPsw={validPsw} setPassword={setPassword} uniqueUsername={uniqueUsername} setUsername={setUsername} />
                 <label className={validPsw ? 'valid' : 'invalid'}>
@@ -67,7 +67,7 @@ function SignUp() {
                 <div>
                     <p className="error" id="hiddenHoverTxt">Not all fields are valid</p>
                     <div className={`${allFieldsValid ? 'validSubmit' : 'invalidSubmit'} submit`}>
-                        <button>Create Account</button>
+                        <button className="create-account-btn">Create Account</button>
                     </div>
                 </div>
             </form>

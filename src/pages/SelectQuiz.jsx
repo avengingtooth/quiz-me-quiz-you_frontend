@@ -5,7 +5,7 @@ function SelectQuiz(){
     // passes the route to go to after a quiz is clicked on
 
     return(
-        <div id="feed">
+        <div id="multiplay-quizzes-view">
             <h1>Discover quizzes</h1>
             <MultipleQuizView nextRoute={'/multiplayer/createLobby'}></MultipleQuizView>
         </div>

@@ -8,6 +8,11 @@ import './stylesheets/nav.css'
 import './stylesheets/edit-create.css'
 import './stylesheets/answer.css'
 import './stylesheets/game.css'
+import './stylesheets/home.css'
+import 'animate.css';
+import './stylesheets/login.css'
+import './stylesheets/joinGame.css'
+import './stylesheets/createLobby.css'
 
 import Create from './pages/Create';
 import Edit from './pages/Edit';
