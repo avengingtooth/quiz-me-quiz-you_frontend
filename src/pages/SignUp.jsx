@@ -27,7 +27,7 @@ function SignUp() {
     // add client side checks for password secure enought before allowing to validate 
     // still never server side checks after tho
     useEffect(() => {
-        if (password.length >= 6 && confirmPassword === password) {
+        if (password.length >= 0 && confirmPassword === password) {
             updatePswValidity(true)
             // passing true instead of the validPsw state variable because it doesnt update quick enough
             checkOverall([uniqueUsername, true], updateOverallValidity)
@@ -65,10 +65,13 @@ function SignUp() {
                     <input placeholder="Confirm password" onChange={event => setConfirmPassword(event.target.value)} type="password" />
                 </label>
                 <div>
-                    <p className="error" id="hiddenHoverTxt">Not all fields are valid</p>
-                    <div className={`${allFieldsValid ? 'validSubmit' : 'invalidSubmit'} submit`}>
-                        <button className="create-account-btn">Create Account</button>
-                    </div>
+                    {
+                        allFieldsValid
+                            ? <div className={`${allFieldsValid ? 'validSubmit' : 'invalidSubmit'} submit`}>
+                                <button className="create-account-btn">Create Account</button>
+                            </div>
+                            : <p className="error" id="hiddenHoverTxt">Not all fields are valid</p>
+                    }
                 </div>
             </form>
         </>
