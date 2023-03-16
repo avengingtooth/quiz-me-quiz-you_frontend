@@ -9,3 +9,66 @@ body{
 input{
     border: 1px black solid;
 }
+
+.start-btn {
+    padding: 1rem 7rem;
+    margin: 2rem 0;
+    background-color: #010190;
+    color: rgb(255, 220, 245);
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+    border-radius: 30px;
+    line-height: 1.4rem;
+    letter-spacing: 0.5px;
+    font-size: 1.6rem;
+}
+
+.next-btn {
+    padding: 0.8rem 2rem;
+    background-color: #010190;
+    color: rgb(255, 220, 245);
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+    border-radius: 30px;
+    line-height: 1.4rem;
+    letter-spacing: 0.5px;
+    font-size: 1.3rem;
+    margin-left: 0.7rem;
+}
+
+.back-btn {
+    padding: 0.8rem 2rem;
+    background-color: rgb(255, 220, 245);
+    color: #010190;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+    border-radius: 30px;
+    line-height: 1.4rem;
+    letter-spacing: 0.5px;
+    font-size: 1.3rem;
+    margin-right: 0.7rem;
+}
+
+.score-display {
+    margin-top: 8rem;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 2rem;
+    color: #010190;
+}
+
+.play-another-quiz-btn {
+    padding: 0.8rem 2rem;
+    background-color: rgb(255, 220, 245);
+    color: #010190;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+    border-radius: 30px;
+    line-height: 1.4rem;
+    letter-spacing: 0.5px;
+    font-size: 1.3rem;
+    margin: 5rem 0;
+    border: 1px solid #010190;
+    box-shadow: 1px 1px 0 0 #010190;
+}

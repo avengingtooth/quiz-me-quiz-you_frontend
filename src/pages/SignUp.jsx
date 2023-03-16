@@ -24,7 +24,7 @@ function SignUp() {
     const [validPsw, updatePswValidity] = useState(false)
     const [uniqueUsername, updateUniqueUsername] = useState(false)
     const [allFieldsValid, updateOverallValidity] = useState(false)
-    const navigate = useNavigate
+    const navigate = useNavigate();
 
     // changes the classname depending on if password is valid or not
     // add client side checks for password secure enought before allowing to validate 
@@ -46,16 +46,16 @@ function SignUp() {
     async function handleSubmit(event) {
         event.preventDefault()
         const userToCreate = { username, password }
-    
+
         try {
-          const response = await myApi.post('/auth/signup', userToCreate)
-          if (response.status === 201) {
-            navigate('/login')
-          }
+            const response = await myApi.post('/auth/signup', userToCreate)
+            if (response.status === 201) {
+                navigate('/login')
+            }
         } catch (error) {
-          console.error(error)
+            console.error(error)
         }
-      }
+    }
 
 
     // check if username is unique in db

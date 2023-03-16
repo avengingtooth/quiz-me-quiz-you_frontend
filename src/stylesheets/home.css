@@ -22,6 +22,19 @@ h1 {
     padding: 0 0 3rem 2.5rem;
 }
 
+.all-quizzes-btn{
+    padding: 1.5rem 7rem;
+    margin: 1rem;
+    background-color: #010190;
+    color: rgb(228, 235, 251);
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+    text-shadow: 1px 1px black;
+    border-radius: 30px;
+    line-height: 1.4rem;
+    letter-spacing: 0.5px;
+}
+
 .home-link-btn {
     padding: 1rem 5rem;
     margin: 1rem;

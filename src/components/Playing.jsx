@@ -1,12 +1,12 @@
 import Leaderboard from "./Leaderboard"
 import Question from './Question'
 
-function Playing(props){
+function Playing(props) {
     let { scores, players, curAnswer, setCurAnswer, title, answers } = props
     // page for multiplayer player when the game is running
     // shows the user's score as well as the leaderboad and the cur question passed by server
 
-    return(
+    return (
         <div>
             <h1>In Game</h1>
             <h2>Your score:</h2>
@@ -18,28 +18,3 @@ function Playing(props){
     )
 }
 export default Playing
-
-// function Playing(props){
-//     // page for multiplayer player when the game is running
-//     // shows the user's score as well as the leaderboad and the cur question passed by server
-
-//     let { id, scores, players, curAnswer, setCurAnswer, setAnswers, allAnswers, title, answers } = props
-//     return(
-//         <div>
-//             <h1>In Game</h1>
-//             <h2>Your score:</h2>
-//             <h3>{scores[id]['score']}</h3>
-//             <Question
-//                 title={title} 
-//                 answers={answers}
-//                 questionInd={allAnswers.length - 1}
-//                 setAnswers={setAnswers} 
-//                 allAnswers={allAnswers} 
-//             ></Question>
-//             <h2>Leaderboard</h2>
-//             <Leaderboard scores={scores} players={players}></Leaderboard>
-//         </div>
-//     )
-// }
-
-// export default Playing
