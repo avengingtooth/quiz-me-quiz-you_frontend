@@ -96,11 +96,12 @@ function QuizEditor(props) {
                                                             <input type="text" placeholder="ANSWER" name="content" value={questions[qInd].answers[aInd].content} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd, aInd, 'content'))} />
                                                             {/* points content */}
                                                             <input type="number" placeholder="POINT(S)" name="points" value={questions[qInd].answers[aInd].points} onChange={e => updateQuestions(updatedQuestionCopy(e, questions, qInd, aInd, 'points'))} />
+                                                            <button type='button' className="addAns" onClick={() => updateQuestions(addAnswer(questions, qInd, emptyAnswer))}>Add Answer</button>
                                                         </div>
                                                     )
                                                 })
                                             }
-                                            <button type='button' className="addAns" onClick={() => updateQuestions(addAnswer(questions, qInd, emptyAnswer))}>Add Answer</button>
+
                                         </div>
                                         <button type='button' className='delete-button' onClick={() => { updateQuestions([...questions.slice(0, qInd), ...questions.slice(qInd + 1)]) }}>Delete Question</button>
                                     </div>
