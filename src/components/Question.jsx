@@ -10,6 +10,14 @@ function Question(props){
     const [selected, setSelected] = useState(null)
 
     useEffect(() => {
+        if (!allAnswers) return
+        let prevAnswerValue = allAnswers[questionInd]
+        if (prevAnswerValue >= 0){
+            setSelected(prevAnswerValue)
+        }
+    }, [])
+
+    useEffect(() => {
         if (typeof selected === 'number' && allAnswers){
             let temp = allAnswers
             temp[questionInd] = selected
