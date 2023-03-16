@@ -1,6 +1,10 @@
 import QuizEditor from "../components/QuizEditor"
 
 function Create(){
+    // creates an empty quiz to pass to the quiz editor
+    // necessary because edit uses the same component but passes values
+    // action defines what is done onsubmit whether to edit or create
+
     let quiz = {
         title: '',
         description: '',

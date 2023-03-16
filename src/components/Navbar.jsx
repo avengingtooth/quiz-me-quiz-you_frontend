@@ -2,8 +2,14 @@ import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { useContext } from "react";
 
-function Navbar() {
-    console.log('nav')
+function Navbar(){
+    
+    return(
+        <>
+            <nav>
+                <NavLink to='/'>Home</NavLink>
+                <div>
+                    <NavLink to='/quiz/all'>Feed</NavLink>
 
     const {
         isLoggedIn,

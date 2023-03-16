@@ -58,7 +58,6 @@ function QuizEditor(props) {
     const [questions, updateQuestions] = useState(props.quiz.questions)
     const [action, setAction] = useState('')
 
-    console.log(title, description, questions, 'hi')
 
     // sets the defaults for when adding a questions or answer element
     const emptyAnswer = {

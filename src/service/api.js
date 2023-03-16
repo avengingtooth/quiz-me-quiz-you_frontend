@@ -1,25 +1,19 @@
 import axios from 'axios'
-import env from "react-dotenv";
 
-// env.config({path: '../../.env'})
-
-const BACKEND_URL = process.env.REACT_APP_ORIGIN;
-console.log(BACKEND_URL)
+const BACKEND_URL = process.env.REACT_APP_ORIGIN || 'http://localhost:5005/';
 
 const myApi = axios.create({
     baseURL: BACKEND_URL,
 })
 
+// quiz crud
+
 myApi.createQuiz = (quiz) => {
     return myApi.post('/quiz/create', {quiz})
 }
 
-myApi.getQuizzes = (count) => {
-    return myApi.get(`/quiz/get/${count}`)
-}
-
-myApi.getQuiz = (quizId) => {
-    return myApi.get(`/quiz/getId/${quizId}`)
+myApi.getQuizWithPoints = (quizId) => {
+    return myApi.get(`/quiz/getQuizWithPoints/${quizId}`)
 }
 
 myApi.editQuiz = (quizId, updatedQuiz) => {
@@ -28,6 +22,21 @@ myApi.editQuiz = (quizId, updatedQuiz) => {
 
 myApi.deleteQuiz = (quizId) => {
     return myApi.post("/quiz/delete", {quizId})
+}
+
+// correcting single player quiz
+myApi.correctQuiz = (id, answers) => {
+    return myApi.post("/quiz/getScore", {answers, id})
+}
+
+// fetching quiz information
+
+myApi.getQuizzes = (offset, count, query) => {
+    return myApi.get(`/quiz/getMultiple/${count}/${offset}/${query?query:' '}/`)
+}
+
+myApi.getQuiz = (quizId) => {
+    return myApi.get(`/quiz/getById/${quizId}`)
 }
 
 export default myApi

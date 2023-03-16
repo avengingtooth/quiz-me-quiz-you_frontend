@@ -1,4 +1,5 @@
-function AllUsernames(props) {
+function AllUsernames(props){
+    // shows all usernames without their scores
     let { players, scores } = props
     return (
         <div>
