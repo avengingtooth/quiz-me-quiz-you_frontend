@@ -28,25 +28,31 @@ import JoinGame from './pages/JoinGame';
 import Game from './pages/Game';
 import SinglePlayerResults from './pages/SinglePlayerResults'
 import ErrorPage from './components/ErrorPage';
+import ProtectedRoute from './pages/ProtectedRoute';
+import IsLoggedOut from './pages/isLoggedOut';
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route element={<Navbar />}>
-          <Route path='/' element={<Home />}></Route> 
+          <Route path='/' element={<Home />}></Route>
 
           {/* authentication routes */}
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/signup' element={<SignUp />}></Route>
+          <Route element={<IsLoggedOut />}>
+            <Route path='/login' element={<Login />}></Route>
+            <Route path='/signup' element={<SignUp />}></Route>
+          </Route>
 
           {/* crud routes */}
-          <Route path='/quiz/create' element={<Create />}></Route>  
-          <Route path='/quiz/:id/edit' element={<Edit />}></Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path='/quiz/create' element={<Create />}></Route>
+            <Route path='/quiz/:id/edit' element={<Edit />}></Route>
+          </Route>
 
-          <Route path='/quiz/all' element={<Feed />}></Route> 
-          <Route path='/quiz/:id' element={<SingleQuizView />}></Route>  
-        
+          <Route path='/quiz/all' element={<Feed />}></Route>
+          <Route path='/quiz/:id' element={<SingleQuizView />}></Route>
+
           <Route path='/quiz/single-player-results/:score/:max' element={<SinglePlayerResults />}></Route>
 
           {/* multiplayer routes */}
