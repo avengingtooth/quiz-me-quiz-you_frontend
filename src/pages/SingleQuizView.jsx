@@ -5,13 +5,12 @@ import { useState, useEffect } from "react"
 import ErrorPage from "../components/ErrorPage"
 
 function submitQuiz(id, finalAnswers){
-    let total = 0
     console.log(finalAnswers)
     myApi
         .correctQuiz(id, finalAnswers)
         .then(res => {
-            total = res.data.total
-            window.location.href = `/quiz/single-player-results/${total}`
+            let { total, max } = res.data
+            window.location.href = `/quiz/single-player-results/${total}/${max}`
         })
         .catch(error => console.log(error))
 
@@ -21,7 +20,7 @@ function SingleQuizView(){
     // gets the quiz id from the url
     // fetches the quiz from db
     let {id} = useParams()
-    const [quizData, setQuiz] = useState({})
+    const [quizData, setQuiz] = useState(null)
     const [allAnswers, setAnswers] = useState([])
 
     useEffect(() => {
@@ -34,7 +33,7 @@ function SingleQuizView(){
     }, [])
 
     useEffect(() => {
-        if (quizData.questions){
+        if (quizData){
             let temp = []
             for (let i = 0; i < quizData.questions.length; i++){
                 temp.push(null)
@@ -43,7 +42,7 @@ function SingleQuizView(){
         }
     }, [quizData])
 
-    if (quizData.questions){
+    if(quizData){
         return(
             <div id="quiz">
                 <h1>{quizData.title}</h1>
@@ -69,7 +68,7 @@ function SingleQuizView(){
     else{
         return(
             <div>
-                <ErrorPage actionText='Look for another quiz' redirect='/quiz/all' error='Quiz was not found'></ErrorPage>
+                <ErrorPage actionText='Return to quiz selection' redirect='/quiz/all' error='Quiz was not found'></ErrorPage>
             </div>
         )
     }

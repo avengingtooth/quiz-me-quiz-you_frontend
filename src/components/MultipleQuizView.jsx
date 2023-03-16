@@ -4,7 +4,11 @@ import myApi from "../service/api"
 
 function MultipleQuizView(props){
     // iterates through all the quizzes fetch and displays a preview of them
-    // #TODO view more needs to select the next 20 quizzes
+    // the offest sets the start of the index of the quizzes being fetched
+    // count is the nb of quizzes being fetched
+    // if the offset - count is greater than 0 it only displays view more to go add to the offset
+    // while the fetch still returns quizzes the view more button is visible otherwise you can only subtract
+    // search bar to filter the searches
     
     const { nextRoute } = props
     const [query, updateQuery] = useState('')

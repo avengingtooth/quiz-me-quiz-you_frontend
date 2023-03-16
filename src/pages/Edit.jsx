@@ -13,7 +13,7 @@ function Edit(){
 
     useEffect(() => {
         myApi
-            .getQuiz(id)
+            .getQuizWithPoints(id)
             .then((res) => setQuiz(res.data.quiz))
             .catch(error => {console.log('error')})
     }, [])

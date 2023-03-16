@@ -12,6 +12,10 @@ myApi.createQuiz = (quiz) => {
     return myApi.post('/quiz/create', {quiz})
 }
 
+myApi.getQuizWithPoints = (quizId) => {
+    return myApi.get(`/quiz/getQuizWithPoints/${quizId}`)
+}
+
 myApi.editQuiz = (quizId, updatedQuiz) => {
     return myApi.post("/quiz/edit", {updatedQuiz, quizId})
 }
@@ -28,10 +32,7 @@ myApi.correctQuiz = (id, answers) => {
 // fetching quiz information
 
 myApi.getQuizzes = (offset, count, query) => {
-    if (!query){
-        query = ' /'
-    }
-    return myApi.get(`/quiz/getMultiple/${count}/${offset}/${query}`)
+    return myApi.get(`/quiz/getMultiple/${count}/${offset}/${query?query:' '}/`)
 }
 
 myApi.getQuiz = (quizId) => {

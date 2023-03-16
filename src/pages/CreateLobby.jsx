@@ -17,16 +17,16 @@ function CreateLobby(){
     const [error, setError] = useState("")
     const [scores, setScores] = useState(null)
     const [players, setPlayers] = useState([])
+    const [quiz, setQuiz] = useState(null)
 
     useEffect(() => {
         const socket = socketIOClient('http://localhost:4000/')
         setSocket(socket)
 
         myApi
-            .getQuiz(id)
-            .then((res) => {socket.emit('quiz-id', {quiz: res.data.quiz})})
+            .getQuizWithPoints(id)
+            .then((res) => socket.emit('quiz-id', {quiz: res.data.quiz}))
             .catch(error => {console.log(error)})
-
 
         socket.on('message', msg => {
             setMessage(msg)
@@ -61,7 +61,11 @@ function CreateLobby(){
 
             <Lobby  scores={scores} players={players} gameState={gameState} error={error}></Lobby>
 
-            <button onClick={() => nextQuestion(clientSocket)} style={{backgroundColor: 'black', color: 'white'}}>Next Question</button>
+            {   
+                gameState !== 'game-over'
+                    ?<button onClick={() => nextQuestion(clientSocket)} >{gameState==='await-start' || !players.length?"Start Game":"Next Question"}</button>
+                    :<button onClick={() => window.location.href = '/multiplayer/select'} >Create new game</button>
+            }
         </div>
     )
 }

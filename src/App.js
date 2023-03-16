@@ -42,7 +42,7 @@ function App() {
           <Route path='/quiz/all' element={<Feed />}></Route> 
           <Route path='/quiz/:id' element={<SingleQuizView />}></Route>  
         
-          <Route path='/quiz/single-player-results/:score' element={<SinglePlayerResults />}></Route>
+          <Route path='/quiz/single-player-results/:score/:max' element={<SinglePlayerResults />}></Route>
 
           {/* multiplayer routes */}
           <Route path='/multiplayer/select' element={<SelectQuiz />}></Route>
