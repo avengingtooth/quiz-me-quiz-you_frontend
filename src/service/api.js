@@ -8,6 +8,12 @@ const myApi = axios.create({
 
 // quiz crud
 
+myApi.interceptors.request.use(request => {
+    const token = localStorage.getItem('token')
+    request.headers.Authorization = token ? `Bearer ${token}` : ''
+    return request
+})
+
 myApi.createQuiz = (quiz) => {
     return myApi.post('/quiz/create', {quiz})
 }

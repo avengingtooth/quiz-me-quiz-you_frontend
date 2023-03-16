@@ -4,13 +4,6 @@ import { useContext } from "react";
 
 function Navbar(){
     
-    return(
-        <>
-            <nav>
-                <NavLink to='/'>Home</NavLink>
-                <div>
-                    <NavLink to='/quiz/all'>Feed</NavLink>
-
     const {
         isLoggedIn,
         user,

@@ -21,6 +21,8 @@ function SingleQuizView(){
     // fetches the quiz from db
     let {id} = useParams()
     const [quizData, setQuiz] = useState(null)
+    const [curQuestionIndex, setQuestionIndex] = useState(null)
+    const [question, setQuestion] = useState(null)
     const [allAnswers, setAnswers] = useState([])
 
     useEffect(() => {
@@ -42,26 +44,44 @@ function SingleQuizView(){
         }
     }, [quizData])
 
+    useEffect(() => {
+        if (!quizData) return
+        setQuestion(quizData.questions[curQuestionIndex])
+    }, [curQuestionIndex]) 
+
     if(quizData){
         return(
             <div id="quiz">
                 <h1>{quizData.title}</h1>
                 <p className="description">{quizData.description}</p>
                 {
-                    quizData.questions.map((question, ind) => {
-                        return(
-                            <Question 
-                                key={`${question.title}${ind}`} 
-                                title={question.questionText} 
-                                answers={question.answers}
-                                questionInd={ind}
-                                setAnswers={setAnswers} 
-                                allAnswers={allAnswers} 
-                            ></Question>
-                        )
-                    })
+                    question
+                    ?<Question
+                        key={`${question._id}`} 
+                        title={question.questionText} 
+                        answers={question.answers}
+                        questionInd={curQuestionIndex}
+                        setAnswers={setAnswers} 
+                        allAnswers={allAnswers}  
+                     ></Question>
+                    :''     
                 }
-                <button onClick={() => submitQuiz(id, allAnswers)} id="submitQuiz">Submit</button>
+                {console.log(curQuestionIndex)}
+                {
+                    typeof curQuestionIndex === 'number'
+                    ?curQuestionIndex > 0
+                        ?curQuestionIndex < quizData.questions.length
+                            ?<>
+                                <button onClick={() => {setQuestionIndex(curQuestionIndex + 1)}}>Next</button>
+                                <button onClick={() => {setQuestionIndex(curQuestionIndex - 1)}}>Back</button>
+                             </>
+                            :<button onClick={() => submitQuiz(id, allAnswers)} id="submitQuiz">Submit</button>
+
+                        :curQuestionIndex < quizData.questions.length
+                            ?<button onClick={() => {setQuestionIndex(curQuestionIndex + 1)}}>Next</button>
+                            :<button onClick={() => submitQuiz(id, allAnswers)} id="submitQuiz">Submit</button>
+                    :<button onClick={() => setQuestionIndex(0)}>Start</button>
+                }
             </div>
         )
     }

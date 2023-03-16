@@ -1,5 +1,4 @@
 import Leaderboard from "./Leaderboard"
-import SingleQuizView from '../pages/SingleQuizView'
 
 function GameResults(props){
     // displays the leaderboad on end of multiplayer game 
@@ -14,8 +13,6 @@ function GameResults(props){
             <h2>Leaderboard</h2>
             <Leaderboard scores={scores} players={players}></Leaderboard>
 
-            <h2>Correction</h2>
-            <SingleQuizView></SingleQuizView>
         </div>
     )
 }
