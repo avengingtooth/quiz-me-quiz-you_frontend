@@ -36,7 +36,6 @@ myApi.correctQuiz = (id, answers) => {
 }
 
 // fetching quiz information
-
 myApi.getQuizzes = (offset, count, query) => {
     return myApi.get(`/quiz/getMultiple/${count}/${offset}/${query?query:' '}/`)
 }
