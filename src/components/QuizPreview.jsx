@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom"
 
-function QuizPreview(props){
-    {console.log('hi')}
-    return(
+function QuizPreview(props) {
+    return (
         <Link to={`${props.nextRoute}/${props._id}`} className="preview">
-            <h1>hello</h1>
-            <h2>{props.title}</h2>
-            <p>{props.description}</p>
+            <h2 className="multiplay-quizzes-title">{props.title}</h2>
+            <p className="multiplay-quizzes-descipt">{props.description}</p>
         </Link>
     )
 }

@@ -1,12 +1,12 @@
-function AllUsernames(props){
+function AllUsernames(props) {
     let { players, scores } = props
-    return(
+    return (
         <div>
             {
                 players.map(id => {
                     let { username } = scores[id]
-                    return(
-                        <p key={username}>{username}</p>
+                    return (
+                        <p className="create-lobby-text" key={username}>{username}</p>
                     )
                 })
             }

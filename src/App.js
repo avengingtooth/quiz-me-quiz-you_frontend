@@ -8,6 +8,11 @@ import './stylesheets/nav.css'
 import './stylesheets/edit-create.css'
 import './stylesheets/answer.css'
 import './stylesheets/game.css'
+import './stylesheets/home.css'
+import 'animate.css';
+import './stylesheets/login.css'
+import './stylesheets/joinGame.css'
+import './stylesheets/createLobby.css'
 
 import Create from './pages/Create';
 import Edit from './pages/Edit';
@@ -30,10 +35,10 @@ function App() {
           <Route path='/' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<SignUp />}></Route>
-          <Route path='/quiz/all' element={<Feed />}></Route> 
-          <Route path='/quiz/create' element={<Create />}></Route>  
-          <Route path='/quiz/:id' element={<SingleQuizView />}></Route>  
-          <Route path='/quiz/:id/edit' element={<Edit />}></Route>  
+          <Route path='/quiz/all' element={<Feed />}></Route>
+          <Route path='/quiz/create' element={<Create />}></Route>
+          <Route path='/quiz/:id' element={<SingleQuizView />}></Route>
+          <Route path='/quiz/:id/edit' element={<Edit />}></Route>
           <Route path='/multiplayer/select' element={<SelectQuiz />}></Route>
           <Route path='/multiplayer/createLobby/:id' element={<CreateLobby />}></Route>
           <Route path='/multiplayer/join' element={<JoinGame />}></Route>

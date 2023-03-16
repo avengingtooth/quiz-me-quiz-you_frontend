@@ -1,8 +1,8 @@
-function ErrorPage(props){
+function ErrorPage(props) {
     let { error } = props
-    return(
+    return (
         <div>
-            <h3>{error}</h3>
+            <h3 className="error-message-text">{error}</h3>
         </div>
     )
 }

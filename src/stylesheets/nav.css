@@ -1,22 +1,68 @@
-nav{
-    color: white;
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* font-family: 'Exo 2', sans-serif; */
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+/* font-family: 'Ubuntu', sans-serif; */
+
+nav {
+    color: rgb(228, 235, 251);
     width: 100%;
     position: absolute;
     display: flex;
-    justify-content: space-between;
-    top: 5%;
+    justify-content: space-evenly;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 1rem 2.5rem 1rem 0;
+    margin-bottom: 0;
+    border: 0;
 }
 
-nav > div{
-    width: 20%;
+.navbar {
+    background-color: rgb(1, 1, 144);
+}
+
+
+.home-logo {
+    padding-left: 0.5rem;
+    fill: rgb(228, 235, 251);
+}
+
+.navbar-links {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Ubuntu', sans-serif;
 }
 
-nav > *{
-    padding: 0 5% 0 5%;
+.nav-link {
+    width: 3rem;
+    cursor: pointer;
 }
 
-nav a{
-    font-size: 1rem;
+header {
+    font-family: 'Exo 2', sans-serif;
+    background-color: rgb(239, 243, 252);
+    width: 100%;
+    margin: 0;
+    display: flex;
+    padding: 0.7rem;
+    margin-top: 4.5rem;
+    flex-direction: column;
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgb(1, 1, 144);
+    text-shadow: 1px 1px rgb(93, 93, 93);
+}
+
+.header-top {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 15%;
+}
+
+.header-bottom {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15%;
 }

@@ -22,22 +22,24 @@ function Login() {
         const userToLogin = { username, password }
 
         try {
-          const response = await myApi.post('/auth/login', userToLogin)
-          console.log(response)
-          storeToken(response.data.authToken)
-           authenticateUser()
+            const response = await myApi.post('/auth/login', userToLogin)
+            console.log(response)
+            storeToken(response.data.authToken)
+            authenticateUser()
         } catch (error) {
-          console.error(error)
+            console.error(error)
         }
     };
-    
+
     return (
         <>
-        <h1>Log In</h1>
-        <form className="auth" onSubmit={handleLoginSubmit}>
-            <EssentialAuth setUsername={setUsername} setPassword={setPassword} />
-            <button type="submit">Log In</button>
-        </form>
+            <h1 className="log-in-title">Log In</h1>
+            <div>
+                <form className="auth" onSubmit={handleLoginSubmit}>
+                    <EssentialAuth setUsername={setUsername} setPassword={setPassword} />
+                    <button className="log-in-reg-btn" type="submit">Log In</button>
+                </form>
+            </div>
         </>
     )
 }
