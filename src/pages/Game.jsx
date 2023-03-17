@@ -23,7 +23,7 @@ function Game(){
     const [error, setError] = useState("")
 
     useEffect(() => {
-        const socket = socketIOClient('https://quiz-me-quiz-you.onrender.com/')
+        const socket = socketIOClient('https://quiz-me-quiz-you.onrender.com:4000/')
         socket.emit('join', {gameId, username})
         setSocket(socket)
 
