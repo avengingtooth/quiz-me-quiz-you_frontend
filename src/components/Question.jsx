@@ -6,7 +6,7 @@ function Question(props){
     // creates answer components for each answer in the answers array in the question
     // when an answr is clicked on it updates an array with the values of all selected answers
     
-    let { setAnswers, setCurAnswer, allAnswers, questionInd, curAnswer } = props
+    let { setAnswers, setCurAnswer, allAnswers, questionInd, curAnswer, title, answers } = props
     const [selected, setSelected] = useState(null)
 
     useEffect(() => {
@@ -28,6 +28,11 @@ function Question(props){
         }
 
     }, [selected])
+
+    useEffect(() => {
+        if (!questionInd) return
+        setSelected(allAnswers[questionInd])
+    }, [title])
 
     return(
         <div className="question">

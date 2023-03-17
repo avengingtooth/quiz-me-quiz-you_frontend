@@ -33,6 +33,8 @@ function Navbar(){
                        
                     <NavLink className={"nav-link"} to='/multiplayer/join'>Join multiplayer game</NavLink>
 
+                    <NavLink className={"nav-link"} to='/multiplayer/select'>Create multiplayer game</NavLink>
+
                 </div>
             </nav>
             <header>
