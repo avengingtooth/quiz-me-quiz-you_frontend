@@ -20,7 +20,7 @@ function CreateLobby() {
     const [quiz, setQuiz] = useState(null)
 
     useEffect(() => {
-        const socket = socketIOClient('http://localhost:4000/')
+        const socket = socketIOClient(proccess.env.REACT_APP_ORIGIN ||'http://localhost:4000/')
         setSocket(socket)
 
         myApi

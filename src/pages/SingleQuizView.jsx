@@ -5,7 +5,6 @@ import { useState, useEffect } from "react"
 import ErrorPage from "../components/ErrorPage"
 
 function submitQuiz(id, finalAnswers) {
-    console.log(finalAnswers)
     myApi
         .correctQuiz(id, finalAnswers)
         .then(res => {
