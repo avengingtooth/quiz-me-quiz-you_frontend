@@ -20,7 +20,7 @@ function CreateLobby() {
     const [quiz, setQuiz] = useState(null)
 
     useEffect(() => {
-        const socket = socketIOClient('http://localhost:4000/')
+        const socket = socketIOClient('https://quiz-me-quiz-you.onrender.com/')
         setSocket(socket)
 
         myApi
