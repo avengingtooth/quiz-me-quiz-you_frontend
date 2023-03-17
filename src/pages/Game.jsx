@@ -68,8 +68,15 @@ function Game(){
             {   
                 !error
                     ?gameState === 'await-start'?<AwaitStart scores={scores} players={players}></AwaitStart>
-                    :gameState === 'playing'?<Playing scores={scores} players={players} curAnswer={curAnswer} setCurAnswer={setCurAnswer} title={question.questionText} answers={question.answers}></Playing>
-                    :gameState === 'playing'?<Playing id={clientSocket?clientSocket.id:''} scores={scores} players={players} curAnswer={curAnswer} setCurAnswer={setCurAnswer} title={question.questionText} answers={question.answers}></Playing>
+                    :gameState === 'playing'?<Playing 
+                            id={playerId}
+                            scores={scores} 
+                            players={players} 
+                            curAnswer={curAnswer} 
+                            setCurAnswer={setCurAnswer} 
+                            title={question.questionText} 
+                            answers={question.answers}
+                            ></Playing>
                     :gameState === 'game-over'?<Results scores={scores} players={players} id={playerId}></Results>
                     :''
                 // :<ErrorPage error={error}></ErrorPage>

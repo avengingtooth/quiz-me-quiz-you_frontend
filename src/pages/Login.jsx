@@ -4,9 +4,6 @@ import { useNavigate } from "react-router-dom";
 import myApi from "../service/api"
 import { AuthContext } from "../context/authContext";
 
-
-const API_URL = "http://localhost:5005";
-
 function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
