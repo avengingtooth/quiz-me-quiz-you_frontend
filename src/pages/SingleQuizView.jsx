@@ -4,8 +4,12 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import ErrorPage from "../components/ErrorPage"
 
+<<<<<<< Updated upstream
 function submitQuiz(id, finalAnswers){
     console.log(finalAnswers)
+=======
+function submitQuiz(id, finalAnswers) {
+>>>>>>> Stashed changes
     myApi
         .correctQuiz(id, finalAnswers)
         .then(res => {
