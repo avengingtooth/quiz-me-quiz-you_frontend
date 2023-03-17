@@ -6,7 +6,7 @@ function Playing(props){
     // page for multiplayer player when the game is running
     // shows the user's score as well as the leaderboad and the cur question passed by server
 
-    return(
+    return (
         <div>
             <h1>In Game</h1>
             <h2>Your score:</h2>

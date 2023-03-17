@@ -23,6 +23,7 @@ function Login() {
             console.log(response)
             storeToken(response.data.authToken)
             authenticateUser()
+            navigate('/quiz/all')
         } catch (error) {
             console.error(error)
         }

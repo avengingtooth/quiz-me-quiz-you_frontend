@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import EssentialAuth from "../components/EssentialAuth"
 import myApi from "../service/api"
+import { useNavigate } from 'react-router-dom'
+
 
 
 function checkOverall(fields, updateOverallValidity) {
@@ -22,12 +24,13 @@ function SignUp() {
     const [validPsw, updatePswValidity] = useState(false)
     const [uniqueUsername, updateUniqueUsername] = useState(false)
     const [allFieldsValid, updateOverallValidity] = useState(false)
+    const navigate = useNavigate();
 
     // changes the classname depending on if password is valid or not
     // add client side checks for password secure enought before allowing to validate 
     // still never server side checks after tho
     useEffect(() => {
-        if (password.length >= 6 && confirmPassword === password) {
+        if (password.length >= 0 && confirmPassword === password) {
             updatePswValidity(true)
             // passing true instead of the validPsw state variable because it doesnt update quick enough
             checkOverall([uniqueUsername, true], updateOverallValidity)
@@ -40,13 +43,18 @@ function SignUp() {
         }
     }, [confirmPassword, password])
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(username + ' ' + password)
-        if (password !== confirmPassword) {
-            return
+    async function handleSubmit(event) {
+        event.preventDefault()
+        const userToCreate = { username, password }
+
+        try {
+            const response = await myApi.post('/auth/signup', userToCreate)
+            if (response.status === 201) {
+                navigate('/login')
+            }
+        } catch (error) {
+            console.error(error)
         }
-        myApi.post('/auth/signup', { username, password })
     }
 
 
@@ -65,10 +73,13 @@ function SignUp() {
                     <input placeholder="Confirm password" onChange={event => setConfirmPassword(event.target.value)} type="password" />
                 </label>
                 <div>
-                    <p className="error" id="hiddenHoverTxt">Not all fields are valid</p>
-                    <div className={`${allFieldsValid ? 'validSubmit' : 'invalidSubmit'} submit`}>
-                        <button className="create-account-btn">Create Account</button>
-                    </div>
+                    {
+                        allFieldsValid
+                            ? <div className={`${allFieldsValid ? 'validSubmit' : 'invalidSubmit'} submit`}>
+                                <button className="create-account-btn">Create Account</button>
+                            </div>
+                            : <p className="error" id="hiddenHoverTxt">Not all fields are valid</p>
+                    }
                 </div>
             </form>
         </>
