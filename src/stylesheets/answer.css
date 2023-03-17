@@ -1,8 +1,7 @@
 .answerContainer{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
     padding-bottom: 5%;
-
 }
 
 .answer:nth-child(4n + 1){
@@ -44,7 +43,7 @@
     border: 3px transparent solid;
 }
 
-.addAns{
+.addAns {
     margin: 0.5rem 0;
     padding: 0.6rem 4rem;
     background-color: #010190;

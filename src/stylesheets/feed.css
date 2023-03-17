@@ -1,6 +1,5 @@
 #feed{
     width: 100%;
-    padding: 0 5% 0 5%;
 }
 
 #viewQuizzes .preview{
@@ -9,13 +8,13 @@
     color: rgb(228, 235, 251);
     box-shadow: 1px 2px 4px 0px rgb(0, 16, 90);
     border-radius: 20px;
-    padding: 0.5rem 0;
+    /* padding: 0.5rem 0; */
     margin: 0.5rem;
     overflow: scroll;
 }
 
 .quizzes-title {
-    padding: 2rem;
+    padding: 1.5rem;
     margin-bottom: 2rem;
 }
 
@@ -29,9 +28,58 @@
 }
 
 .preview h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .preview p {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.search-bar {
+    position: inline;
+    background-color: rgb(228, 235, 251);
+    color: #010190;
+    box-shadow: 1px 2px 4px 0px rgb(0, 16, 90);
+    border-radius: 10px;
+    padding: 0.3rem 0;
+    margin: 0.5rem;
+    overflow: scroll;
+    font-size: 1.2rem;
+    width: 60%;
+}
+
+.search-bar-btn {
+    background-color: #010190;
+    color: rgb(228, 235, 251);
+    box-shadow: 1px 2px 4px 0px rgb(0, 16, 90);
+    border-radius: 10px;
+    padding: 0.3rem 1rem;
+    margin: 0.5rem;
+    overflow: scroll;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.view-more-btn {
+    background-color: #010190;
+    color: rgb(228, 235, 251);
+    box-shadow: 1px 2px 4px 0px rgb(0, 16, 90);
+    border-radius: 10px;
+    padding: 0.3rem 1rem;
+    margin: 0.5rem;
+    overflow: scroll;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.view-less-btn {
+    background-color: rgb(228, 235, 251);
+    color: #010190;
+    box-shadow: 1px 2px 4px 0px rgb(0, 16, 90);
+    border-radius: 10px;
+    padding: 0.3rem 1rem;
+    margin: 0.5rem;
+    overflow: scroll;
+    font-size: 1.2rem;
+    font-weight: 600;
 }

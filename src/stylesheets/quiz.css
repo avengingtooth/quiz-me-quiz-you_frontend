@@ -36,14 +36,20 @@
 }
 
 #quiz #submitQuiz{
-    background-color: rgb(255, 220, 245);
-    padding: 3% 6%;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+    background-color: #010190;
+    padding: 0.8rem 4rem;
     width: fit-content;
     margin-bottom: 5%;
     border-radius: 20px;
-    color: #010190;
-    font-weight: 600;
+    color: rgb(255, 220, 245);
+    line-height: 1.4rem;
+    letter-spacing: 0.5px;
+    font-size: 1.3rem;
+    margin-top: 3rem;
 }
+
 
 .multiplay-quizzes-view {
     margin: 1rem;

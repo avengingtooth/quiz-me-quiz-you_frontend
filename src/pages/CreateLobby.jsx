@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react" 
+import { useState, useEffect } from "react"
 import socketIOClient from 'socket.io-client'
 import { useParams } from 'react-router-dom'
 import myApi from '../service/api.js'
@@ -25,8 +25,8 @@ function CreateLobby() {
 
         myApi
             .getQuizWithPoints(id)
-            .then((res) => socket.emit('quiz-id', {quiz: res.data.quiz}))
-            .catch(error => {console.log(error)})
+            .then((res) => socket.emit('quiz-id', { quiz: res.data.quiz }))
+            .catch(error => { console.log(error) })
 
         socket.on('message', msg => {
             setMessage(msg)
@@ -62,10 +62,10 @@ function CreateLobby() {
 
             <Lobby className="create-lobby-text" scores={scores} players={players} gameState={gameState} error={error}></Lobby>
 
-            {   
+            {
                 gameState !== 'game-over'
-                    ?<button onClick={() => nextQuestion(clientSocket)} >{gameState==='await-start' || !players.length?"Start Game":"Next Question"}</button>
-                    :<button onClick={() => window.location.href = '/multiplayer/select'} >Create new game</button>
+                    ? <button onClick={() => nextQuestion(clientSocket)} >{gameState === 'await-start' || !players.length ? "Start Game" : "Next Question"}</button>
+                    : <button className="multiplay-start-btn" onClick={() => window.location.href = '/multiplayer/select'} >Create new game</button>
             }
         </div>
     )

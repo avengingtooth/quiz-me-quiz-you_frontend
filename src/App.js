@@ -28,6 +28,8 @@ import JoinGame from './pages/JoinGame';
 import Game from './pages/Game';
 import SinglePlayerResults from './pages/SinglePlayerResults'
 import ErrorPage from './components/ErrorPage';
+import ProtectedRoute from './pages/ProtectedRoute';
+import IsLoggedOut from './pages/isLoggedOut';
 
 function App() {
   return (

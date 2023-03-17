@@ -4,8 +4,12 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import ErrorPage from "../components/ErrorPage"
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 function submitQuiz(id, finalAnswers){
+=======
+function submitQuiz(id, finalAnswers) {
+>>>>>>> 991a1abc8aec5fa6c9b3871915d623b91cc89df1
     console.log(finalAnswers)
 =======
 function submitQuiz(id, finalAnswers) {
@@ -20,10 +24,10 @@ function submitQuiz(id, finalAnswers) {
 
 }
 
-function SingleQuizView(){
+function SingleQuizView() {
     // gets the quiz id from the url
     // fetches the quiz from db
-    let {id} = useParams()
+    let { id } = useParams()
     const [quizData, setQuiz] = useState(null)
     const [curQuestionIndex, setQuestionIndex] = useState(null)
     const [question, setQuestion] = useState(null)
@@ -35,13 +39,13 @@ function SingleQuizView(){
             .then((res) => {
                 setQuiz(res.data.quiz)
             })
-            .catch(error => {console.log(error)})
+            .catch(error => { console.log(error) })
     }, [])
 
     useEffect(() => {
-        if (quizData){
+        if (quizData) {
             let temp = []
-            for (let i = 0; i < quizData.questions.length; i++){
+            for (let i = 0; i < quizData.questions.length; i++) {
                 temp.push(null)
             }
             setAnswers(temp)
@@ -51,46 +55,47 @@ function SingleQuizView(){
     useEffect(() => {
         if (!quizData) return
         setQuestion(quizData.questions[curQuestionIndex])
-    }, [curQuestionIndex]) 
+    }, [curQuestionIndex])
 
-    if(quizData){
-        return(
+    if (quizData) {
+        return (
             <div id="quiz">
                 <h1>{quizData.title}</h1>
                 <p className="description">{quizData.description}</p>
                 {
                     question
-                    ?<Question
-                        key={`${question._id}`} 
-                        title={question.questionText} 
-                        answers={question.answers}
-                        questionInd={curQuestionIndex}
-                        setAnswers={setAnswers} 
-                        allAnswers={allAnswers}  
-                     ></Question>
-                    :''     
+                        ? <Question
+                            key={`${question._id}`}
+                            title={question.questionText}
+                            answers={question.answers}
+                            questionInd={curQuestionIndex}
+                            setAnswers={setAnswers}
+                            allAnswers={allAnswers}
+                        ></Question>
+                        : ''
                 }
                 {console.log(curQuestionIndex)}
                 {
                     typeof curQuestionIndex === 'number'
-                    ?curQuestionIndex > 0
-                        ?curQuestionIndex < quizData.questions.length
-                            ?<>
-                                <button onClick={() => {setQuestionIndex(curQuestionIndex + 1)}}>Next</button>
-                                <button onClick={() => {setQuestionIndex(curQuestionIndex - 1)}}>Back</button>
-                             </>
-                            :<button onClick={() => submitQuiz(id, allAnswers)} id="submitQuiz">Submit</button>
+                        ? curQuestionIndex > 0
+                            ? curQuestionIndex < quizData.questions.length
+                                ? <>
 
-                        :curQuestionIndex < quizData.questions.length
-                            ?<button onClick={() => {setQuestionIndex(curQuestionIndex + 1)}}>Next</button>
-                            :<button onClick={() => submitQuiz(id, allAnswers)} id="submitQuiz">Submit</button>
-                    :<button onClick={() => setQuestionIndex(0)}>Start</button>
+                                    <button className="back-btn" onClick={() => { setQuestionIndex(curQuestionIndex - 1) }}>Back</button>
+                                    <button className="next-btn" onClick={() => { setQuestionIndex(curQuestionIndex + 1) }}>Next</button>
+                                </>
+                                : <button onClick={() => submitQuiz(id, allAnswers)} id="submitQuiz">Submit</button>
+
+                            : curQuestionIndex < quizData.questions.length
+                                ? <button className="next-btn" onClick={() => { setQuestionIndex(curQuestionIndex + 1) }}>Next</button>
+                                : <button className="submit-btn" onClick={() => submitQuiz(id, allAnswers)} id="submitQuiz">Submit</button>
+                        : <button className="start-btn" onClick={() => setQuestionIndex(0)}>Start</button>
                 }
             </div>
         )
     }
-    else{
-        return(
+    else {
+        return (
             <div>
                 <ErrorPage actionText='Return to quiz selection' redirect='/quiz/all' error='Quiz was not found'></ErrorPage>
             </div>
