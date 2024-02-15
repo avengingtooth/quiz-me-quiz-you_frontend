@@ -1,0 +1,19 @@
+.projectIcon{
+    width: 45vw;
+    height: 40vw;
+    text-align: center;
+    display: flex;
+    background-size: contain;
+    margin: auto;
+    border: dotted black 4px;
+    margin: 5%;
+}
+
+.projectIcon *{
+    height: 100%;
+    margin: auto;
+}
+
+.projectIcon h1{
+    padding: 5%;
+}

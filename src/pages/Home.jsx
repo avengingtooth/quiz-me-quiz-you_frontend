@@ -1,22 +1,24 @@
-import { NavLink } from "react-router-dom"
+import ProjectIcon from "./components/ProjectIcon";
+import data from '../data.json';
 
-
-function Home() {
-
-    return (
-        <>
-            <div className="title-first-part">
-                <h1 class="animate__animated animate__zoomInDown">Quizzing me</h1>
+function Home(){
+    return(
+        <div id="home">
+            <h1>Mobile App Programming Projects</h1>
+            <p>click or scan QR code to view</p>
+            <div id="homeGrid">
+                {
+                    data["projects"].map((cur) => {
+                        let project = data[cur]
+                        console.log(project);
+                        return(
+                            <ProjectIcon key = {project["title"]} project = {project}/>
+                        )
+                    })
+                }
             </div>
-            <div className="title-second-part">
-                <h1 class="animate__animated animate__zoomInUp animate__delay-1s">Quizzing you</h1>
-            </div>
-            <NavLink className="all-quizzes-btn" to='/quiz/all'>CHOOSE A QUIZ</NavLink>
-            <NavLink className="home-link-btn" to='/login'>LOG IN TO UPDATE OR CREATE A QUIZ</NavLink>
-            <NavLink className="home-link-btn" to='/signup'>SIGN UP TO CREATE YOUR OWN QUIZZES</NavLink>
-            <NavLink className="home-link-btn" to='/multiplayer/join'>JOIN A MULTIPLAYER GAME</NavLink>
-        </>
+        </div>
     )
 }
 
-export default Home
+export default Home;
